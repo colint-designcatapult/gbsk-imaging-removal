@@ -186,7 +186,6 @@ namespace Heracles.Indoor
                 containerRegistry.RegisterSingleton<IEmrTreatmentFieldCommands, GrpcTreatmentFieldCommands>();
                 containerRegistry.RegisterSingleton<IEmrTreatmentCommands, GrpcTreatmentCommands>();
                 containerRegistry.RegisterSingleton<IEmrActualTreatmentFieldCommands, GrpcActualTreatmentFieldCommands>();
-                containerRegistry.RegisterSingleton<IEmrSeriesCommands, GrpcSeriesCommands>();
                 containerRegistry.RegisterSingleton<IEmrPhotoCommands, GrpcPhotoCommands>();
 
                 containerRegistry.RegisterSingleton<IUserCommands, GrpcUserCommands>();
@@ -232,7 +231,6 @@ namespace Heracles.Indoor
                 containerRegistry.RegisterSingleton<IEmrActualTreatmentFieldCommands, EmrDummyActualTreatmentFieldCommands>();
                 containerRegistry.RegisterSingleton<IEmrEmissionTreatmentFieldCommands, EmrDummyEmissionTreatmentFieldCommands>();
                 containerRegistry.RegisterSingleton<IEmrTreatmentCommands, EmrDummyTreatmentCommands>();
-                containerRegistry.RegisterSingleton<IEmrSeriesCommands, EmrDummySeriesCommands>();
                 containerRegistry.RegisterSingleton<IEmrPhotoCommands, EmrDummyPhotoCommands>();
 
                 containerRegistry.RegisterSingleton<IUserCommands, DummyUserCommands>();
@@ -280,7 +278,6 @@ namespace Heracles.Indoor
                 containerRegistry.RegisterSingleton<IEmrTreatmentCommands, GrpcTreatmentCommands>();
                 containerRegistry.RegisterSingleton<IEmrActualTreatmentFieldCommands, GrpcActualTreatmentFieldCommands>();
                 //containerRegistry.RegisterSingleton<IUserCommands, GrpcUserCommands>();
-                containerRegistry.RegisterSingleton<IEmrSeriesCommands, GrpcSeriesCommands>();
                 containerRegistry.RegisterSingleton<IEmrPhotoCommands, GrpcPhotoCommands>();
 
                 containerRegistry.RegisterSingleton<IUserCommands, GrpcUserCommands>();

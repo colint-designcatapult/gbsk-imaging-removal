@@ -263,29 +263,6 @@
                     </Grid>
                 </Button>
 
-                <!--Scan button-->
-                <Button 
-                    Grid.Column="2"
-                    Height="{StaticResource ButtonHeight}"
-                    Width="{StaticResource ButtonWidth}"
-                    Command="{Binding ScanVolumeCommand}">
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="{StaticResource FieldSmallMarginGridLength}"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-
-                        <Path 
-                            Data="{StaticResource UltrasoundIcon}" 
-                            Style="{StaticResource ButtonPathStyle}" 
-                            Width="38" Height="38"/>
-
-                        <TextBlock Grid.Column="2" Style="{StaticResource ButtonTextBlockStyle}" Text="Scan"/>
-                    </Grid>
-                </Button>
-
                 <userControls:XccWarningLabel
                     Grid.Column="6" 
                     FontSize="{StaticResource SmallFontSize}"
