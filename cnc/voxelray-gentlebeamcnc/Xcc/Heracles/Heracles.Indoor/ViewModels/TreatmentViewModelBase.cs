@@ -56,7 +56,6 @@ namespace Heracles.Indoor.ViewModels
             TreatmentInfoStore.DiagnosisChanged += (s, e) =>
             {
                 RaisePropertyChanged(nameof(CanCapturePhoto));
-                RaisePropertyChanged(nameof(CanScanVolume));
             };
 
             TreatmentInfoStore.SimulationChanged += (s, e) =>
@@ -146,17 +145,6 @@ namespace Heracles.Indoor.ViewModels
 
 
 
-        private DelegateCommand? _scanVolumeCommand;
-        public DelegateCommand ScanVolumeCommand => _scanVolumeCommand ??= new DelegateCommand(
-            () =>
-            {
-                if (!InvokeQuitTreatmentAction())
-                    return;
-
-                RegionManager.RequestNavigate(Regions.Main.ClinicalDataRegion, "ImagingView", new NavigationParameters { { "Type", ImagingViewType.Acquisition } });
-            }).ObservesCanExecute(() => CanScanVolume);
-
-        private bool CanScanVolume => TreatmentInfoStore is { Diagnosis.Archived: false };
 
 
         private DelegateCommand? _capturePhotoCommand;

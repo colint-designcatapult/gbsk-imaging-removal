@@ -5,7 +5,6 @@ using Heracles.Application.AppLayer.QualityAssurance.QualityCheck;
 using Heracles.Application.Commands.DummyCommands;
 using Heracles.Application.Commands.gRPC.Common;
 using Heracles.Application.Commands.gRPC.EMR;
-using Heracles.Application.DeepColor;
 using Heracles.Application.Infra.DataManagement.EMR;
 using Heracles.Application.Infra.DataManagement.EMR.DataAccess;
 using Heracles.Application.Infra.DataManagement.EMR.DataAccess.gRPC;
@@ -22,7 +21,6 @@ using Heracles.Application.Models.Treatment;
 using Heracles.Application.Services;
 using Heracles.Core.Commands;
 using Heracles.Core.Models;
-using Heracles.Indoor.AppLayer.DeepColor;
 using Heracles.Indoor.Models;
 using Heracles.Indoor.Models.UseCases;
 using Heracles.Indoor.Modules;
@@ -335,11 +333,6 @@ namespace Heracles.Indoor
             {
                 containerRegistry.RegisterSingleton<ITelemetryService, GcbTelemetryService>();
             }
-
-            #region DeepColor integration
-            containerRegistry.RegisterSingleton<IpcModel>();
-            containerRegistry.RegisterSingleton<IpcService>();
-            #endregion DeepColor integration
 
 
             containerRegistry.RegisterSingleton<FieldModel>();

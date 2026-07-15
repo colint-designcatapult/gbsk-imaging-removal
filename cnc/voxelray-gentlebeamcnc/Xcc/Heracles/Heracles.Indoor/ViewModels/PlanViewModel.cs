@@ -8,7 +8,6 @@ using Heracles.Application.Models.Treatment;
 using Heracles.Core.Constants;
 using Heracles.Core.Enums;
 using Heracles.Core.Models.EMR;
-using Heracles.Indoor.AppLayer.DeepColor;
 
 using Prism.Commands;
 using Prism.Events;
@@ -135,12 +134,6 @@ public class PlanViewModel : TreatmentViewModelBase
         set => SetProperty(ref _selectedPhoto, value);
     }
 
-    private ISeries? _selectedImage;
-    public ISeries? SelectedImage
-    {
-        get => _selectedImage;
-        set => SetProperty(ref _selectedImage, value);
-    }
     #endregion Properties
 
 
@@ -187,19 +180,6 @@ public class PlanViewModel : TreatmentViewModelBase
         //(PlanModel.Plan.Status != PlanStatus.APPROVED || (TreatmentHistoryModel.Treatments?.Count == 0));
     }
 
-
-    private DelegateCommand<ISeries>? _openAcquisitionCommand;
-    public DelegateCommand<ISeries> OpenAcquisitionCommand => _openAcquisitionCommand ??= new DelegateCommand<ISeries>(
-        series =>
-        {
-            var parameters = new NavigationParameters
-            {
-                { "Type", ImagingViewType.Viewer },
-                { "AcquisitionId", series.NumberOfInstances },
-            };
-
-            RegionManager.RequestNavigate(Regions.Main.ClinicalDataRegion, "ImagingView", parameters);
-        });
     #endregion Commands
 
 

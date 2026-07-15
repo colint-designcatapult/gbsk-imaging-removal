@@ -26,8 +26,6 @@ namespace Heracles.Application.Models.RDBMS.EMR
 
         public long PrescriptionId { get; set; }
 
-        public long OriginSeriesId { get; set; }
-
         public PlanStatus Status { get; set; }// = null!;
 
         public string ApprovedBy { get; set; }
