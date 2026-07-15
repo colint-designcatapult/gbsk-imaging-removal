@@ -175,17 +175,5 @@ namespace Xcc.Infra.GryphonBoard.CommandAPI
             return sessionKey.Sign(packet).Buffer;
         }
 
-        public byte[] GenerateReleaseImagingPointCmd(IGcbSessionAuthentication sessionKey)
-        {
-            var packet = UdpPacketBuilder.BuildPacket(
-                packetType: (uint)GCBPacketType.ReleaseImagingPointCmd,
-                packetCounter: ++packetCounter,
-                payload: [
-                    (int)GCBReleaseCommandScope.Point,
-                    0  // authentication code, calc it below from the packet payload:
-                ]);
-            return sessionKey.Sign(packet).Buffer;
-        }
-
     }
 }

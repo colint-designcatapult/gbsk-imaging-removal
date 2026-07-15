@@ -16,8 +16,6 @@
         SetWarmupFault = 11,
         Conditioning,
         SetPlan,
-        StartWaitingForImagingKey,
-        StartImagingEmission,
         Initialize
     }
 }

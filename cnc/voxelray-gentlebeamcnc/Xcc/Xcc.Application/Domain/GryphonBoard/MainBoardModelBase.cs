@@ -552,32 +552,6 @@ namespace Xcc.Application.Domain.GryphonBoard
             await tokenSource.CancelAsync();
         }
 
-        public async Task RunWaitingForImagingKey()
-        {
-            var tokenSource = CancellationTokenSource = new();
-            await StartWaitingForImagingKey();
-
-            // First wait for HW key awaiting state:
-            await WaitForState(GcbStateNew.WaitForKey, tokenSource.Token);
-
-            // Wait for user to press Base Key
-            while (GcbDataStore.Interlocks?.BaseKey != true)
-            {
-                await Task.Delay(50, tokenSource.Token);
-            }
-        }
-
-        public async Task RunImagingEmission()
-        {
-            var tokenSource = CancellationTokenSource = new();
-            await ReleaseImagingPoint();
-
-            // Now wait for emission completion (should go to Staged):
-            await WaitForState(GcbStateNew.Staged, tokenSource.Token);
-
-            OnGcbActionCompletion(GcbActionType.BeamOnCompleted);
-        }
-
 
         public virtual async Task<GcbOperationalPoint> QueryPointFromGCB(int index)
         {
@@ -766,33 +740,6 @@ namespace Xcc.Application.Domain.GryphonBoard
 
             await GcbAPI.ReleasePlan(GCBReleaseCommandScope.Point, Session!.Value);
             OnGcbActionCompletion(GcbActionType.StartBeamOn);
-        }
-
-        protected virtual async Task StartWaitingForImagingKey()
-        {
-            _ = LogWriter.LogAsync("StartImaging", LogRecordSeverity.Info, LogRecordType.System);
-
-            var telemetry = SystemTelemetry;
-            if (telemetry is null)
-            {
-                throw new NullReferenceException(nameof(telemetry));
-            }
-
-            int currentPoint = telemetry.CurrentOperationalPoint;
-            if (currentPoint < CurrentPlan.TotalPoints)
-            {
-                var currentPointValue = CurrentPlan[currentPoint];
-                currentPointValue.InitialRemainingPointTime = currentPointValue.RemainingPointTime;
-                CurrentPlan.UpdatePoint(currentPointValue);
-            }
-
-            await GcbAPI.StartImaging(Session!.Value);
-            OnGcbActionCompletion(GcbActionType.StartWaitingForImagingKey);
-        }
-
-        protected virtual Task ReleaseImagingPoint()
-        {
-            return GcbAPI.ReleaseImagingPoint(Session!.Value);
         }
 
 

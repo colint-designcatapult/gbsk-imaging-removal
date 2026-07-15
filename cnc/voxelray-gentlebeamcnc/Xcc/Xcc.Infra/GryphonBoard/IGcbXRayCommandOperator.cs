@@ -25,6 +25,5 @@ namespace Xcc.Infra.GryphonBoard
         byte[] GenerateVersionInfoRequestCmd();
         byte[] GenerateFaultInfoRequestCmd();
         byte[] GenerateWaitForButtonCmd(IGcbSessionAuthentication sessionKey);
-        byte[] GenerateReleaseImagingPointCmd(IGcbSessionAuthentication sessionKey);
     }
 }
