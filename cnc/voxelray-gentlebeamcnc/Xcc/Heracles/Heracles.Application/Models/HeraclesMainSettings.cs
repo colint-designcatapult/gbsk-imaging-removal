@@ -15,20 +15,9 @@ namespace Heracles.Application.Models
         #region IHeraclesMainSetting
 
 
-        public Uri RobotGrpcServerUri => new($"http://{RobotGrpcServerEndPoint.Address()}");
-
-        // RobotGrpcServerMac was needed for WakeOnLan service that we don't utilize anymore
-        [Obsolete]
-        public PhysicalAddress RobotGrpcServerMac { get; } = 
-            reader.GetOptionalString("AppSettings:RobotGrpcServerMacString") is null ?
-                PhysicalAddress.None : PhysicalAddress.Parse(reader.GetOptionalString("AppSettings:RobotGrpcServerMacString"));
-
         public ISystemEndPoint UpsBroadcastServiceEndPoint { set; get; } =
             SystemEndPoint.Create(
                 reader.GetOptionalString("AppSettings:EndPoints:UpsBroadcastServiceEndPoint", NetworkProperties.UpsBroadcastServiceEndPoint));
-
-        public double RobotSafeZoneThresholdZmm { set; get; } = reader.GetOptionalDouble("AppSettings:RobotSafeZoneThresholdZmm", 0d);
-        public double RobotSafeZoneThresholdYmm { set; get; } = reader.GetOptionalDouble("AppSettings:RobotSafeZoneThresholdYmm", 0d);
 
 
         #region ITextLogSettings
@@ -39,17 +28,9 @@ namespace Heracles.Application.Models
 
 
         #region IHeraclesCoreSettings
-        public ISystemEndPoint RobotGrpcServerEndPoint { set; get; } =
-            SystemEndPoint.Create(
-                reader.GetOptionalString("AppSettings:EndPoints:RobotGrpcServerEndPoint", NetworkProperties.RobotGrpcServerEndPoint));
-
         public ISystemEndPoint AcbCommandsEndPoint { get; set; } =
             SystemEndPoint.Create(
                 reader.GetOptionalString("AppSettings:EndPoints:AcbCommandsEndPoint", NetworkProperties.AcbCommandsEndPoint));
-        public ISystemEndPoint PhotoAcousticEndPoint { get; } =
-            SystemEndPoint.Create(
-                reader.GetOptionalString("AppSettings:EndPoints:PhotoAcousticEndPoint", NetworkProperties.ImagingEndPoint));
-
 
         #region ICoreSettings
         public ISystemEndPoint GCBTelemetryEndPoint { get; set; } =

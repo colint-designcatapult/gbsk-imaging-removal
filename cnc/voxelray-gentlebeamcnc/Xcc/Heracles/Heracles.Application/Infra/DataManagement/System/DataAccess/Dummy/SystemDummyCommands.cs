@@ -274,8 +274,6 @@ namespace Heracles.Application.Infra.DataManagement.System.DataAccess.Dummy
                 DatabaseEndpoint = new SystemEndPoint("127.0.0.1:5433"),
                 ImagingHeadCamEndPoint = new SystemEndPoint("127.0.0.1:50002"),
                 TreatmentHeadCamEndPoint = new SystemEndPoint("127.0.0.1:50003"),
-                RobotCamEndPoint = new SystemEndPoint("127.0.0.1:50004"),
-                RoboticRosEndPoint = new SystemEndPoint("127.0.0.1:50051"),
                 GCBTelemetryEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBTelemetryEndPoint?.Address() ?? "127.0.0.1:50020"),
                 GCBCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBCommandsEndPoint?.Address() ?? "127.0.0.1:50007"),
                 AcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.AcbCommandsEndPoint?.Address() ?? "127.0.0.1:7000"),

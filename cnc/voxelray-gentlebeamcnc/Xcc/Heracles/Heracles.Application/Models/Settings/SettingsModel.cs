@@ -35,12 +35,10 @@ namespace Heracles.Application.Models.Settings
                 DatabaseEndpoint = new SystemEndPoint(SystemEndPoint.LocalHost),
                 ImagingHeadCamEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
                 TreatmentHeadCamEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
-                RobotCamEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
                 GCBTelemetryEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBTelemetryEndPoint?.Address() ?? "127.0.0.1:50020"),
                 GCBCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBCommandsEndPoint?.Address() ?? "127.0.0.1:50007"),
                 AcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.AcbCommandsEndPoint?.Address() ?? "127.0.0.1:50022"),
                 QcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.QcbCommandsEndPoint?.Address() ?? "127.0.0.1:50023"),
-                RoboticRosEndPoint =  new SystemEndPoint(heraclesCoreSettings.RobotGrpcServerEndPoint?.Address() ?? "127.0.0.1:50051"),
                 ImagingServerEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
 
                 DCDataReconstructionServerEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
@@ -61,9 +59,6 @@ namespace Heracles.Application.Models.Settings
             {
                 SetProperty(ref _settings, value);
                 SystemSettingsStore.Settings = value;
-                // As for the robots, they're a separate project and don't use Settings model now,
-                // so we set their endpoint to the appSettings as well:
-                HeraclesCoreSettings.RobotGrpcServerEndPoint = _settings.EndPointsConfiguration.RoboticRosEndPoint;
             }
         }
 

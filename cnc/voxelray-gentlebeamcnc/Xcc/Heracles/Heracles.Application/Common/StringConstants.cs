@@ -63,14 +63,6 @@ namespace Heracles.Application.Common
             public static readonly string NewImageSaveErrorMessage = "Failed to save a new image from camera";
         }
 
-        public static class PhotoAcousticView
-        {
-            public const string VisitCreateError = "Failed to create a visit record";
-            public const string SeriesCreateError = "Failed to create a series record";
-
-            public const string DeepColorConnectErrorMessage = "Failed to connect to the DeepColor server";
-        }
-
         public static class EMR
         {
             public static class Validation

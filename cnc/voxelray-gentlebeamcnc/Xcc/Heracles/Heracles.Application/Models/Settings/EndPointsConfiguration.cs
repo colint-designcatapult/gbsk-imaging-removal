@@ -16,12 +16,10 @@ namespace Heracles.Application.Models.Settings
             TreatmentHeadCamEndPoint = new SystemEndPoint(configuration.TreatmentHeadCamEndPoint);
             ImagingHeadCamEndPoint = new SystemEndPoint(configuration.ImagingHeadCamEndPoint);
             TreatmentHeadCamEndPoint = new SystemEndPoint(configuration.TreatmentHeadCamEndPoint);
-            RobotCamEndPoint = new SystemEndPoint(configuration.RobotCamEndPoint);
             GCBTelemetryEndPoint = new SystemEndPoint(configuration.GCBTelemetryEndPoint);
             GCBCommandsEndPoint = new SystemEndPoint(configuration.GCBCommandsEndPoint);
             AcbCommandsEndPoint = new SystemEndPoint(configuration.AcbCommandsEndPoint);
             QcbCommandsEndPoint = new SystemEndPoint(configuration.QcbCommandsEndPoint);
-            RoboticRosEndPoint = new SystemEndPoint(configuration.RoboticRosEndPoint);
             ImagingServerEndPoint = new SystemEndPoint(configuration.ImagingServerEndPoint);
             DCDataReconstructionServerEndPoint = new SystemEndPoint(configuration.DCDataReconstructionServerEndPoint);
             DCDataProgressWebSocketEndPoint = new SystemEndPoint(configuration.DCDataProgressWebSocketEndPoint);
@@ -186,11 +184,9 @@ namespace Heracles.Application.Models.Settings
             DatabaseEndpoint.AcceptChanges();
             ImagingHeadCamEndPoint.AcceptChanges();
             TreatmentHeadCamEndPoint.AcceptChanges();
-            RobotCamEndPoint.AcceptChanges();
             GCBTelemetryEndPoint.AcceptChanges();
             GCBCommandsEndPoint.AcceptChanges();
             AcbCommandsEndPoint.AcceptChanges();
-            RoboticRosEndPoint.AcceptChanges();
             ImagingServerEndPoint.AcceptChanges();
             DCDataReconstructionServerEndPoint.AcceptChanges();
             DCDataProgressWebSocketEndPoint.AcceptChanges();

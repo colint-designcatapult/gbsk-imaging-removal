@@ -33,19 +33,11 @@ namespace Heracles.Indoor.ViewModels
             {
                 if (SetProperty(ref _switch2D3D, value) && value is not null)
                 {
-                    if (_switch2D3D.Value)
-                    {
-                        RegionManager.RequestNavigate(Regions.Main.ClinicalData.Images.ViewerRegion, "VolumeView", PhotoAcousticViewParameters);
-                    }
-                    else
-                    {
-                        RegionManager.RequestNavigate(Regions.Main.ClinicalData.Images.ViewerRegion, "PhotoAcousticPlotView", PhotoAcousticViewParameters);
-                    }
+                    // PhotoAcoustic imaging views removed as part of patient imaging removal
                 }
             }
         }
 
-        NavigationParameters PhotoAcousticViewParameters { set; get; }
         #endregion
 
         #region Private methods
@@ -53,8 +45,7 @@ namespace Heracles.Indoor.ViewModels
         {
             base.OnNavigatedTo(navigationContext);
 
-            PhotoAcousticViewParameters = navigationContext.Parameters;
-
+            // PhotoAcoustic imaging removed as part of patient imaging removal
             Switch2D3D = false;
 
         }

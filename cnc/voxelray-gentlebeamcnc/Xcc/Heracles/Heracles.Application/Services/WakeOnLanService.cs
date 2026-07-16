@@ -59,7 +59,8 @@ namespace Heracles.Application.Services
         {
             foreach (int port in _ports)
             {
-                await sendMagicPacket(_heraclesMainSettings.RobotGrpcServerMac, IPAddress.Broadcast.ToString(), port);
+                // Robot wake-up removed as part of robot control system removal
+                //await sendMagicPacket(_heraclesMainSettings.RobotGrpcServerMac, IPAddress.Broadcast.ToString(), port);
                 // TODO: get mac by RobotGrpcServerUri
                 //await sendMagicPacket(_appSettings.RobotGrpcServerMac, _appSettings.RobotGrpcServerUri.Host, port);
             }

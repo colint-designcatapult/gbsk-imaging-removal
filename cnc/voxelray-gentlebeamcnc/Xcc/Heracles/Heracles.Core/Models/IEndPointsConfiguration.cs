@@ -9,10 +9,8 @@ namespace Heracles.Core.Models
         SystemEndPoint DatabaseEndpoint { get; set; }
         SystemEndPoint ImagingHeadCamEndPoint { get; set; }
         SystemEndPoint TreatmentHeadCamEndPoint { get; set; }
-        SystemEndPoint RobotCamEndPoint { get; set; }
         SystemEndPoint GCBTelemetryEndPoint { get; set; }
         SystemEndPoint GCBCommandsEndPoint { get; set; }
-        SystemEndPoint RoboticRosEndPoint { get; set; }
         SystemEndPoint AcbCommandsEndPoint { get; set; }
         SystemEndPoint QcbCommandsEndPoint { get; set; }
 

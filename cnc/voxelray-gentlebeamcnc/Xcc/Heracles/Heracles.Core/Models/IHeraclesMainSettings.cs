@@ -6,20 +6,20 @@ namespace Heracles.Core.Models
 {
     public interface IHeraclesCoreSettings : ICoreSettings
     {
-        public ISystemEndPoint RobotGrpcServerEndPoint { set; get; }
-        public ISystemEndPoint AcbCommandsEndPoint { get; set; }
+        ISystemEndPoint AcbCommandsEndPoint { get; set; }
+        ISystemEndPoint QcbCommandsEndPoint { get; set; }
+        ISystemEndPoint DataCommandsEndPoint { get; set; }
+        int GrpcTimeout { get; }
+        string StorageRoot { get; }
+        string StartupLoginUsername { get; }
+        string? CameraUriSource { get; set; }
     }
 
-    public interface IHeraclesMainSettings : ITextLogSettings, IHeraclesCoreSettings, IXRaySettings, IAcbSettings, IDebugSettings
+    public interface IHeraclesMainSettings : IHeraclesCoreSettings, ITextLogSettings, IXRaySettings, IDebugSettings
     {
-        public ISystemEndPoint RobotGrpcServerEndPoint { set; get; }
-        public Uri RobotGrpcServerUri { get; }
-
-        [Obsolete]
-        public PhysicalAddress RobotGrpcServerMac { get; }
-
-        public double RobotSafeZoneThresholdZmm { set; get; }
-        public double RobotSafeZoneThresholdYmm { set; get; }
+        ISystemEndPoint UpsBroadcastServiceEndPoint { get; set; }
+        int AcbReceiveTimeout { get; }
+        bool UseDummyHeadActuators { get; }
     }
 
     public interface IHeraclesExternalSettings : ITextLogSettings, IHeraclesCoreSettings, IXRaySettings, IWarmUpSettings, IDebugSettings

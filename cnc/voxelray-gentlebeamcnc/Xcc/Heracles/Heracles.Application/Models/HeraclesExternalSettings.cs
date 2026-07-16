@@ -19,19 +19,9 @@ public class HeraclesExternalSettings(ISettingsReader reader) : Core.Models.IHer
 
 
     #region IHeraclesCoreSettings
-    public ISystemEndPoint RobotGrpcServerEndPoint { set; get; } =
-        SystemEndPoint.Create(
-            reader.GetOptionalString("AppSettings:EndPoints:RobotGrpcServerEndPoint", NetworkProperties.RobotGrpcServerEndPoint));
-
-
     public ISystemEndPoint AcbCommandsEndPoint { get; set; } =
         SystemEndPoint.Create(
             reader.GetOptionalString("AppSettings:EndPoints:AcbCommandsEndPoint", NetworkProperties.AcbCommandsEndPoint));
-
-    public ISystemEndPoint PhotoAcousticEndPoint { get; } =
-        SystemEndPoint.Create(
-            reader.GetOptionalString("AppSettings:EndPoints:PhotoAcousticEndPoint", NetworkProperties.ImagingEndPoint));
-
 
     #region ICoreSettings
     public ISystemEndPoint GCBTelemetryEndPoint { get; set; } =

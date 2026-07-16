@@ -3020,10 +3020,8 @@ namespace Heracles.Application.Protos
                     DatabaseEndpoint = new SystemEndPoint(settings.DatabaseIp, settings.DatabasePort),
                     ImagingHeadCamEndPoint = new SystemEndPoint(settings.ImagingHeadcamIp, settings.ImagingHeadcamPort),
                     TreatmentHeadCamEndPoint = new SystemEndPoint(settings.TreatmentHeadcamIp, settings.TreatmentHeadcamPort),
-                    RobotCamEndPoint = new SystemEndPoint(settings.RobotcamIp, settings.RobotcamPort),
                     GCBTelemetryEndPoint = new SystemEndPoint(settings.GcbTelemetryIp, settings.GcbTelemetryPort),
                     GCBCommandsEndPoint = new SystemEndPoint(settings.GcbCommandsIp, settings.GcbCommandsPort),
-                    RoboticRosEndPoint = new SystemEndPoint(settings.RoboticRosIp, settings.RoboticRosPort),
                     // TODO: we temporarily store qcb in robot's columns
                     QcbCommandsEndPoint = new SystemEndPoint(settings.RoboticRosIp, settings.RoboticRosPort),
                     ImagingServerEndPoint = new SystemEndPoint(settings.DataAcquisitionIp, settings.DataAcquisitionPort),
@@ -3053,16 +3051,10 @@ namespace Heracles.Application.Protos
                 ImagingHeadcamPort = settings.EndPointsConfiguration.ImagingHeadCamEndPoint.Port.ToString(),
                 TreatmentHeadcamIp = settings.EndPointsConfiguration.TreatmentHeadCamEndPoint.Ip(),
                 TreatmentHeadcamPort = settings.EndPointsConfiguration.TreatmentHeadCamEndPoint.Port.ToString(),
-                RobotcamIp = settings.EndPointsConfiguration.RobotCamEndPoint.Ip(),
-                RobotcamPort = settings.EndPointsConfiguration.RobotCamEndPoint.Port.ToString(),
-
                 GcbTelemetryIp = settings.EndPointsConfiguration.GCBTelemetryEndPoint.Ip(),
                 GcbTelemetryPort = settings.EndPointsConfiguration.GCBTelemetryEndPoint.Port.ToString(),
                 GcbCommandsIp = settings.EndPointsConfiguration.GCBCommandsEndPoint.Ip(),
                 GcbCommandsPort = settings.EndPointsConfiguration.GCBCommandsEndPoint.Port.ToString(),
-                // TODO: we temporarily store qcb in robot's columns
-                RoboticRosIp = settings.EndPointsConfiguration.QcbCommandsEndPoint.Ip(),
-                RoboticRosPort = settings.EndPointsConfiguration.QcbCommandsEndPoint.Port.ToString(),
                 DataAcquisitionIp = settings.EndPointsConfiguration.ImagingServerEndPoint.Ip(),
                 DataAcquisitionPort = settings.EndPointsConfiguration.ImagingServerEndPoint.Port.ToString(),
 
