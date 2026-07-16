@@ -25,7 +25,6 @@ using Com.Empyreanmed.Heracles.RobotStoredPositions.V1;
 using Com.Empyreanmed.Heracles.Roles.V1;
 using Com.Empyreanmed.Heracles.RolesPermissions.V1;
 using Com.Empyreanmed.Heracles.SafetyChecks.V1;
-using Com.Empyreanmed.Heracles.Series.V1;
 using Com.Empyreanmed.Heracles.Settings.V1;
 using Com.Empyreanmed.Heracles.Simulations.V1;
 using Com.Empyreanmed.Heracles.TreatmentDevices.V1;
@@ -79,7 +78,6 @@ public sealed class SqliteGrpcServerHost : IAsyncDisposable
         services.AddSingleton(_ => new SqliteProtoRepository<ActualTreatmentField>(dbPath, "actual_treatment_fields", hasParentId: true));
         services.AddSingleton(_ => new SqliteProtoRepository<EmissionTreatmentField>(dbPath, "emission_treatment_fields", hasParentId: true));
         services.AddSingleton(_ => new SqliteProtoRepository<Treatment>(dbPath, "treatments"));
-        services.AddSingleton(_ => new SqliteProtoRepository<Series>(dbPath, "series", hasParentId: true));
         services.AddSingleton(_ => new SqliteProtoRepository<Photo>(dbPath, "photos", hasParentId: true));
         services.AddSingleton(_ => new SqliteProtoRepository<Com.Empyreanmed.Heracles.Users.V1.User>(dbPath, "users"));
         services.AddSingleton(_ => new SqliteProtoRepository<Role>(dbPath, "roles"));
@@ -120,7 +118,6 @@ public sealed class SqliteGrpcServerHost : IAsyncDisposable
         services.AddSingleton<ActualTreatmentFieldServiceImpl>();
         services.AddSingleton<EmissionTreatmentFieldServiceImpl>();
         services.AddSingleton<TreatmentServiceImpl>();
-        services.AddSingleton<SeriesServiceImpl>();
         services.AddSingleton<PhotosServiceImpl>();
         services.AddSingleton<UsersServiceImpl>();
         services.AddSingleton<RoleServiceImpl>();
@@ -162,7 +159,6 @@ public sealed class SqliteGrpcServerHost : IAsyncDisposable
         _app.MapGrpcService<ActualTreatmentFieldServiceImpl>();
         _app.MapGrpcService<EmissionTreatmentFieldServiceImpl>();
         _app.MapGrpcService<TreatmentServiceImpl>();
-        _app.MapGrpcService<SeriesServiceImpl>();
         _app.MapGrpcService<PhotosServiceImpl>();
         _app.MapGrpcService<UsersServiceImpl>();
         _app.MapGrpcService<RoleServiceImpl>();
