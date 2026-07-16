@@ -1,7 +1,5 @@
 ﻿using Empyrean.Common.Infra.Settings;
-
 using System.Net.NetworkInformation;
-
 using Xcc.Core.Models;
 
 namespace Heracles.Core.Models
@@ -12,15 +10,14 @@ namespace Heracles.Core.Models
         public ISystemEndPoint AcbCommandsEndPoint { get; set; }
     }
 
-    public interface IHeraclesMainSettings : IHeraclesCoreSettings
+    public interface IHeraclesMainSettings : ITextLogSettings, IHeraclesCoreSettings, IXRaySettings, IAcbSettings, IDebugSettings
     {
         public ISystemEndPoint RobotGrpcServerEndPoint { set; get; }
         public Uri RobotGrpcServerUri { get; }
 
-        // RobotGrpcServerMac was needed for WakeOnLan service that we don't utilize anymore
         [Obsolete]
         public PhysicalAddress RobotGrpcServerMac { get; }
-        
+
         public double RobotSafeZoneThresholdZmm { set; get; }
         public double RobotSafeZoneThresholdYmm { set; get; }
     }

@@ -49,9 +49,7 @@ public class PlanViewModel : TreatmentViewModelBase
         ITreatmentDoseCalculation treatmentDoseCalculation,
         ITreatmentHistoryModel treatmentHistoryModel,
         ITreatmentInfoStore treatmentInfoStore,
-        IPhotoService photoService,
-        IAcquisitionModel acquisitionModel,
-        AcquisitionService acquisitionService) :
+        IPhotoService photoService) :
         base(
             regionManager,
             logWriter,
@@ -69,8 +67,6 @@ public class PlanViewModel : TreatmentViewModelBase
         TreatmentDoseCalculation = treatmentDoseCalculation;
         TreatmentHistoryModel = treatmentHistoryModel;
         PhotoService = photoService;
-        AcquisitionModel = acquisitionModel;
-        AcquisitionService = acquisitionService;
 
         //Event subscriptions
         TreatmentInfoStore.DiagnosisChanged += (_, e) => OnDiagnosisChanged(e);
@@ -103,8 +99,6 @@ public class PlanViewModel : TreatmentViewModelBase
     public IPatientRepository PatientRepository { get; }
     public ITreatmentHistoryModel TreatmentHistoryModel { get; }
     public IPhotoService PhotoService { get; }
-    public IAcquisitionModel AcquisitionModel { get; }
-    public AcquisitionService AcquisitionService { get; }
     public ITreatmentDoseCalculation TreatmentDoseCalculation { get; }
     public IAuthorizedUserStore AuthorizedUserStore { get; }
     public IPopUpService PopUpService { get; }
@@ -245,7 +239,6 @@ public class PlanViewModel : TreatmentViewModelBase
         try
         {
             Photos.Clear();
-            AcquisitionModel.Clear(); // TODO: we clear it before fetching via acquisition service to reset on null diagnosis
             _receivePhotosTokenSource?.Cancel();
 
             VerifyCommand?.RaiseCanExecuteChanged();
@@ -253,7 +246,6 @@ public class PlanViewModel : TreatmentViewModelBase
             if (diagnosis is not null)
             {
                 (Photos, _receivePhotosTokenSource) = await PhotoService.GetPhotosAsync(diagnosis.Id);
-                await AcquisitionService.FetchSeriesAsync(diagnosis.Id);
             }
 
         }

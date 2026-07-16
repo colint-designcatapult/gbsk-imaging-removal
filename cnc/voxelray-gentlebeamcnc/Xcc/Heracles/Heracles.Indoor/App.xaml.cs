@@ -1,4 +1,4 @@
-﻿using Empyrean.Common.Infra.Settings;
+using Empyrean.Common.Infra.Settings;
 using Heracles.Application.AppLayer.Collimators;
 using Heracles.Application.AppLayer.Patient;
 using Heracles.Application.AppLayer.QualityAssurance.QualityCheck;
@@ -122,8 +122,6 @@ namespace Heracles.Indoor
             containerRegistry.RegisterSingleton<IPlanLoading, PlanLoading>();
             containerRegistry.RegisterSingleton<LoadForTreatmentEventSource>();
             containerRegistry.RegisterSingleton<PlanEventSource>();
-            containerRegistry.RegisterSingleton<ISeriesModel, SeriesModel>();
-            containerRegistry.RegisterSingleton<IAcquisitionModel, AcquisitionModel>();
             containerRegistry.RegisterSingleton<IExitingModel, ExitingModel>();
             containerRegistry.RegisterSingleton<IAcquisitionResultStore, AcquisitionResultStore>();
             containerRegistry.RegisterSingleton<IQcRepository, QcRepository>();

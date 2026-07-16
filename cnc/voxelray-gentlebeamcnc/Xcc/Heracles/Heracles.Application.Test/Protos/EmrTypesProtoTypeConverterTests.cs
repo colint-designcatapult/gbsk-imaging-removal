@@ -1,4 +1,4 @@
-﻿using Com.Empyreanmed.Heracles.ActualTreatmentFields.V1;
+using Com.Empyreanmed.Heracles.ActualTreatmentFields.V1;
 using Com.Empyreanmed.Heracles.Diagnoses.V1;
 using Com.Empyreanmed.Heracles.EmissionTreatmentFields.V1;
 using Com.Empyreanmed.Heracles.Enums.V1;
@@ -7,7 +7,6 @@ using Com.Empyreanmed.Heracles.Photos.V1;
 using Com.Empyreanmed.Heracles.Plans.V1;
 using Com.Empyreanmed.Heracles.Positions.V1;
 using Com.Empyreanmed.Heracles.Prescriptions.V1;
-using Com.Empyreanmed.Heracles.Series.V1;
 using Com.Empyreanmed.Heracles.Simulations.V1;
 using Com.Empyreanmed.Heracles.TreatmentDevices.V1;
 using Com.Empyreanmed.Heracles.TreatmentFields.V1;
@@ -32,7 +31,6 @@ namespace Heracles.Application.Test.Protos
     [TestFixture(typeof(IUser), typeof(Com.Empyreanmed.Heracles.Users.V1.User))]
     [TestFixture(typeof(ITreatmentDevice), typeof(TreatmentDevice))]
     [TestFixture(typeof(IPatientPosition), typeof(Position))]
-    [TestFixture(typeof(ISeries), typeof(Series))]
     [TestFixture(typeof(IPhotoDescription), typeof(Photo))]
     [TestFixture(typeof(IActualTreatmentField), typeof(ActualTreatmentField))]
     [TestFixture(typeof(IEmissionTreatmentField), typeof(EmissionTreatmentField))]
@@ -389,7 +387,6 @@ namespace Heracles.Application.Test.Protos
                 Id = BaseEntry.NEW_ENTRY_ID,
                 CreationDate = DateTime.Now,
                 PrescriptionId = 1,
-                OriginSeriesId = 2,
                 CollimatorType = Core.Enums.TargetType.TargetType_61_Fields,
                 ApprovedBy = "test@test",
                 Status = Core.Enums.PlanStatus.APPROVED,
@@ -425,7 +422,6 @@ namespace Heracles.Application.Test.Protos
                 Id = 1,
                 CreationDate = ProtoTypesConverter.ToTimestamp(DateTime.Now),
                 PrescriptionId = 1,
-                OriginSeriesId = 2,
                 TargetType = TARGETTYPE.ImvbCollimator5MmCell,
                 ApprovedBy = "test@test",
                 Status = STATUS.PendingApproval,
@@ -716,64 +712,6 @@ namespace Heracles.Application.Test.Protos
                 Assert.That(position.Position, Is.EqualTo(Heracles.Core.Enums.PatientPosition.LyingLT));
                 Assert.That(position.SimulationId, Is.EqualTo(protoType.SimulationId));
                 Assert.That(position.Id, Is.EqualTo(protoType.Id));
-            });
-        }
-
-        [Test]
-        public void ToProto_ISeries_Test()
-        {
-            var series = new Application.Models.RDBMS.EMR.Series
-            {
-                Id = BaseEntry.NEW_ENTRY_ID,
-                CreationDate = DateTime.Today,
-                DiagnosisId = 1,
-                VisitId = 2,
-                LesionDepth = 1.5,
-                Location = string.Empty,
-                Name = string.Empty,
-                Type = Core.Enums.ImageType.Xray,
-            };
-            var protoType = ProtoTypesConverter.ToProto(series);
-            Assert.Multiple(() =>
-            {
-                Assert.That(protoType.HasDiagnosisId, Is.True);
-                Assert.That(protoType.DiagnosisId, Is.EqualTo(series.DiagnosisId));
-                Assert.That(protoType.HasLocation, Is.True);
-                Assert.That(protoType.Location, Is.EqualTo(series.Location));
-                Assert.That(protoType.HasId, Is.False);
-            });
-
-            // now try with valid Id, also set a description:
-            series.Id = 1;
-            series.Description = "some description";
-            protoType = ProtoTypesConverter.ToProto(series);
-            Assert.Multiple(() =>
-            {
-                Assert.That(protoType.HasId, Is.True);
-                Assert.That(protoType.Id, Is.EqualTo(series.Id));
-            });
-        }
-
-        [Test]
-        public void FromProto_ISeries_Test()
-        {
-            var protoType = new Series
-            {
-                Id = 1,
-                CreationDate = ProtoTypesConverter.ToTimestamp(DateTime.Today),
-                DiagnosisId = 1,
-                VisitId = 2,
-                LesionDepth = 1.5f,
-                Location = string.Empty,
-                Name = string.Empty,
-                Type = IMAGETYPE.Photoacoustic,
-            };
-            var series = ProtoTypesConverter.FromProto(protoType);
-            Assert.Multiple(() =>
-            {
-                Assert.That(series.DiagnosisId, Is.EqualTo(protoType.DiagnosisId));
-                Assert.That(series.Type, Is.EqualTo(Heracles.Core.Enums.ImageType.Photoacoustic));
-                Assert.That(series.Id, Is.EqualTo(protoType.Id));
             });
         }
 
