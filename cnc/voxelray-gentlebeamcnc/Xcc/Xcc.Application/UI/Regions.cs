@@ -20,14 +20,6 @@ public static class Regions
             {
                 public const string ViewerRegion = "ViewerRegion";
             }
-
-            public const string ImagingRegion = "ImagingRegion";
-
-            public static class Imaging
-            {
-                public const string ViewerRegion = "ViewerRegion";
-                public const string ImagingProtocolRegion = "ImagingProtocolRegion";
-            }
         }
 
         public const string PhysicsRegion = "PhysicsRegion";
@@ -37,7 +29,6 @@ public static class Regions
         public static class Settings
         {
             public const string NetworkSettingsRegion = "NetworkSettingsRegion";
-            public const string ImagingProtocolsRegion = "ImagingProtocolsRegion";
             public const string UserManagementRegion = "UserManagementRegion";
             public const string UserPermissionsRegion = "UserPermissionsRegion";
             public const string HeadManagementRegion = "HeadManagementRegion";
@@ -51,7 +42,6 @@ public static class Regions
     public static class External
     {
         public const string TreatmentRegion = "TreatmentRegion";
-        public const string ImagingRegion = "ImagingRegion";
 
         public const string QualityAssuranceRegion = "QualityAssuranceRegion";
 

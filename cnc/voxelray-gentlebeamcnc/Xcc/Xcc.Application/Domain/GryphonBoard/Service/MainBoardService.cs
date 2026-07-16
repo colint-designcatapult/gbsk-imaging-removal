@@ -148,16 +148,6 @@ namespace Xcc.Application.Domain.GryphonBoard.Service
                 ]));
             return true;
         }
-
-        public Task RunWaitingForImagingKey()
-        {
-            throw new NotImplementedException();
-        }
-
-        public Task RunImagingEmission()
-        {
-            throw new NotImplementedException();
-        }
         #endregion Board command sequences
         #endregion Active commands
 
