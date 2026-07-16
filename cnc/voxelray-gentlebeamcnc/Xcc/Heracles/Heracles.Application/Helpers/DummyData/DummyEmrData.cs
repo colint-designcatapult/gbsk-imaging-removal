@@ -29,7 +29,6 @@ namespace Heracles.Application.Helpers.DummyData
             IEmrTreatmentFieldCommands emrTreatmentFieldCommands,
             ILogWriter logWriter,
             IUserCommands emrUserCommands,
-            IEmrSeriesCommands emrSeriesCommands,
             IEmrTreatmentCommands emrTreatmentCommands,
             IEmrActualTreatmentFieldCommands emrActualTreatmentFieldCommands,
             IEmrPatientPositionCommands emrPatientPositionCommands,
@@ -44,7 +43,6 @@ namespace Heracles.Application.Helpers.DummyData
             EmrTreatmentFieldCommands = emrTreatmentFieldCommands;
             LogWriter = logWriter;
             EmrUserCommands = emrUserCommands;
-            EmrSeriesCommands = emrSeriesCommands;
             EmrTreatmentCommands = emrTreatmentCommands;
             EmrActualTreatmentFieldCommands = emrActualTreatmentFieldCommands;
             EmrPatientPositionCommands = emrPatientPositionCommands;
@@ -64,7 +62,6 @@ namespace Heracles.Application.Helpers.DummyData
         public IEmrTreatmentFieldCommands EmrTreatmentFieldCommands { get; }
         public ILogWriter LogWriter { get; }
         public IUserCommands EmrUserCommands { get; }
-        public IEmrSeriesCommands EmrSeriesCommands { get; }
         public IEmrTreatmentCommands EmrTreatmentCommands { get; }
         public IEmrActualTreatmentFieldCommands EmrActualTreatmentFieldCommands { get; }
         public IEmrPatientPositionCommands EmrPatientPositionCommands { get; }
@@ -83,8 +80,6 @@ namespace Heracles.Application.Helpers.DummyData
 
                 var users = await EmrUserCommands.ReadAllAsync();
                 var savedUser = users.First();
-                int seriesId = 0;
-
                 var patients = new List<IPatient>
                 {
                     new Patient
@@ -190,19 +185,6 @@ namespace Heracles.Application.Helpers.DummyData
 
                         if (diagnosisIndex != diagnosesCount - 1) // leave the last diagnosis empty
                         {
-                            //ISeries savedSeries = EmrSeriesCommands.CreateAsync(new Series
-                            //{
-                            //    CreationDate = DateTime.Now,
-                            //    DiagnosisId = diagnosis.Id,
-                            //    LesionDepth = 0.1,
-                            //    Location = "pack://application:,,,/Xcc.Application;Component/UI/Resources/Images/DemoImageSet/DeepColorImages/1.png",
-                            //    Name = "series_" + DateTime.Now.ToString(),
-                            //    Type = ImageType.Photoacoustic,
-                            //    Modality = "Modality1",
-                            //    VisitId = visit.Id,
-                            //    NumberOfInstances = seriesId++ // TODO: this wont work with actual DeepColor, you need to truncate all the series for it
-                            //}).GetAwaiter().GetResult();
-
                             bool isApproved = (diagnosisIndex % 4 < 2);
                             Status status = (isApproved) ? Status.APPROVED : Status.PENDING_APPROVAL;
                             SimulationStatus simulationStatus = (isApproved) ? SimulationStatus.Approved : SimulationStatus.Pending;
@@ -289,7 +271,6 @@ namespace Heracles.Application.Helpers.DummyData
                             {
                                 CreationDate = DateTime.Now,
                                 PrescriptionId = prescription.Id,
-                                OriginSeriesId = 0,
                                 Status = (status == Status.APPROVED) ? PlanStatus.APPROVED : PlanStatus.PENDING_APPROVAL,
                                 CollimatorType = /*(prescription.Id % 2 == 0) ? TargetType.TargetType_61_Fields :*/ TargetType.TargetType_50mm_SSD_15mm_Field,
                                 TreatmentLoadingState = TreatmentLoadingState.Unloaded,

@@ -100,45 +100,6 @@ namespace Xcc.Infra.GryphonBoard.CommandAPI
 #endif
         }
         
-        public async Task StartImaging(GcbSession session)
-        {
-            byte[] data = GcbXRayCommandOperator.GenerateWaitForButtonCmd(GetSessionKey(session));
-            byte[] responseData = await SendRequestSeveralTimes(data);
-
-            UdpPacket responsePacket = ParseAndValidateResponseData(responseData, GCBPacketType.WaitForButtonResponse, expectedPayloadLength: 2);
-            var status = (GcbProcessingStatus)(int)responsePacket[0];
-            var authCodeStatus = (GcbProcessingStatus)(int)responsePacket[1];
-
-            if (authCodeStatus != GcbProcessingStatus.OK || status != GcbProcessingStatus.OK)
-            {
-                throw new Exception($"Failed to complete 'WaitForButton' command with status: {status}. Authentication Status: {authCodeStatus}");
-            }
-
-#if DEBUG
-            string msg = $"GCB 'WaitForButton' command status: {status}. Authentication Status: {authCodeStatus}";
-            _ = LogWriter.LogAsync(msg, LogRecordSeverity.Info, LogRecordType.System);
-#endif
-        }
-        
-        public async Task ReleaseImagingPoint(GcbSession session)
-        {
-            byte[] data = GcbXRayCommandOperator.GenerateReleaseImagingPointCmd(GetSessionKey(session));
-            byte[] responseData = await SendRequestSeveralTimes(data);
-
-            UdpPacket responsePacket = ParseAndValidateResponseData(responseData, GCBPacketType.ReleaseImagingPointResponse, expectedPayloadLength: 2);
-            var status = (GcbProcessingStatus)(int)responsePacket[0];
-            var authCodeStatus = (GcbProcessingStatus)(int)responsePacket[1];
-
-            if (authCodeStatus != GcbProcessingStatus.OK || status != GcbProcessingStatus.OK)
-            {
-                throw new Exception($"Failed to complete 'ReleaseImagingPoint' command with status: {status}. Authentication Status: {authCodeStatus}");
-            }
-
-#if DEBUG
-            string msg = $"GCB 'ReleaseImagingPoint' command status: {status}. Authentication Status: {authCodeStatus}";
-            _ = LogWriter.LogAsync(msg, LogRecordSeverity.Info, LogRecordType.System);
-#endif
-        }
 
         public async Task<GcbSession> NewSession(int totalPoints)
         {

@@ -634,7 +634,6 @@ namespace Xcc.Test.Xcc.Infra.GryphonBoard
         [TestCase(GCBPacketType.OperationalPointConfirmationCmd)]
         [TestCase(GCBPacketType.OperationalPointQueryCmd)]
         [TestCase(GCBPacketType.ReleaseTreatmentPlan)]
-        [TestCase(GCBPacketType.ReleaseImagingPointCmd)]
         [TestCase(GCBPacketType.WaitForButtonCmd)]
         [TestCase(GCBPacketType.VersionInfoResponse)]
         [TestCase(GCBPacketType.FaultInfoResponse)]
@@ -646,7 +645,6 @@ namespace Xcc.Test.Xcc.Infra.GryphonBoard
         [TestCase(GCBPacketType.OperationalPointConfirmationResponse)]
         [TestCase(GCBPacketType.OperationalPointQueryResponse)]
         [TestCase(GCBPacketType.ReleaseTreatmentPlanResponse)]
-        [TestCase(GCBPacketType.ReleaseImagingPointResponse)]
         [TestCase(GCBPacketType.WaitForButtonResponse)]
         public void Parse_Throws_With_InvalidPacketType(GCBPacketType packetType)
         {

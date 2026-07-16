@@ -57,9 +57,6 @@ namespace Xcc.Core.Domain.GryphonBoard
         Task BeamOn();
         Task BeamOnOnePoint();
 
-        Task RunWaitingForImagingKey();
-        Task RunImagingEmission();
-
         Task ResumePlan();
         #endregion Board command sequences
         #endregion Active commands 
@@ -98,7 +95,6 @@ namespace Xcc.Core.Domain.GryphonBoard
         StagePlan,
         ReleasePlan,
         StartBeamOn,
-        StartWaitingForImagingKey,
         OnePointCompleted,
         BeamOnCompleted,
         ClearPlan,

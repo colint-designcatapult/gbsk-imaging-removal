@@ -96,7 +96,6 @@ public class HeraclesExternalSettings(ISettingsReader reader) : Core.Models.IHer
     public string? DebugAuthPassword { get; } = reader.GetOptionalString("AppSettings:Debug:AuthPassword");
     public string? DummyCollimatorSerial { get; } = reader.GetOptionalString("AppSettings:Debug:DummyCollimatorSerial");
     public long DebugLoadedPlanId { get; } = reader.GetOptionalLong("AppSettings:Debug:LoadedPlanId", 0);
-    public long DebugLoadedImagingPlanId { get; } = reader.GetOptionalLong("AppSettings:Debug:LoadedImagingPlanId", 0);
     public string? PathToDummyImage { get; set; } = reader.GetOptionalString("AppSettings:Debug:PathToDummyImage");
     public string? PathToTagScreenshot { get; set; } = reader.GetOptionalString("AppSettings:Debug:PathToTagScreenshot");
     public bool DoNotExpandFullscreen { get; set; } = reader.GetOptionalBool("AppSettings:Debug:DoNotExpandFullscreen", false);

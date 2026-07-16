@@ -127,7 +127,7 @@ Heracles DB API
 UID: SW-H10SG-12
 TITLE: Patients' Data Management
 STATEMENT: >>>
-The application shall include a centralized and secure data repository for storing and managing all treatment planning data, including patient information, imaging data, treatment plans, and treatment history.
+The application shall include a centralized and secure data repository for storing and managing all treatment planning data, including patient information, treatment plans, and treatment history.
 
 Patient Table will be stored in a secure manner, and data will be encrypted.
 

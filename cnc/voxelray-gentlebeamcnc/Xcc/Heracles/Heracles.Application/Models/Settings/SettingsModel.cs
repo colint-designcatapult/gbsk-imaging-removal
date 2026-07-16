@@ -1,4 +1,4 @@
-﻿using System.ComponentModel;
+using System.ComponentModel;
 using System.Threading.Tasks;
 using Heracles.Application.Infra.DataManagement.System.DataAccess;
 using Heracles.Core.Models;
@@ -41,7 +41,7 @@ namespace Heracles.Application.Models.Settings
                 AcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.AcbCommandsEndPoint?.Address() ?? "127.0.0.1:50022"),
                 QcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.QcbCommandsEndPoint?.Address() ?? "127.0.0.1:50023"),
                 RoboticRosEndPoint =  new SystemEndPoint(heraclesCoreSettings.RobotGrpcServerEndPoint?.Address() ?? "127.0.0.1:50051"),
-                ImagingServerEndPoint = new SystemEndPoint(heraclesCoreSettings.PhotoAcousticEndPoint?.Address() ?? "127.0.0.1:33405"),
+                ImagingServerEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
 
                 DCDataReconstructionServerEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
                 DCDataProgressWebSocketEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),

@@ -22,7 +22,6 @@ public interface IDebugSettings
     string? DebugAuthPassword { get; }
     string? DummyCollimatorSerial { get; }
     long DebugLoadedPlanId { get; }
-    long DebugLoadedImagingPlanId { get; }
     /// <summary>
     /// Is specified, application will try to use this path to show image in the dcm-viewer.
     /// </summary>

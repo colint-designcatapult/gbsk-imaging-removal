@@ -6,8 +6,6 @@ namespace Heracles.Core.Models
     {
         public string Path { get; set; }
 
-        public ESeriesFormat Format { get; set; }
-
         public string Modality { set; get; }
     }
 }

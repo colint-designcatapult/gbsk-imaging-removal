@@ -26,7 +26,6 @@ namespace Heracles.Indoor.ViewModels
         public IDialogService DialogService { get; }
         public IHeraclesMainSettings Settings { get; }
         public ILogRepository LogWriter { get; }
-        public IEmrSeriesCommands SeriesCommands { get; }
         public IEmrPhotoCommands PhotoCommands { get; }
         public IPatientListModel PatientListModel { get; }
         public ITreatmentInfoStore TreatmentInfoStore { get; }
@@ -84,7 +83,6 @@ namespace Heracles.Indoor.ViewModels
             IDialogService dialogService,
             IHeraclesMainSettings settings,
             ILogRepository logWriter, 
-            IEmrSeriesCommands seriesCommands,
             IEmrPhotoCommands photoCommands,
             IPatientListModel patientListModel,
             ITreatmentInfoStore treatmentInfoStore)
@@ -93,7 +91,6 @@ namespace Heracles.Indoor.ViewModels
             DialogService = dialogService;
             Settings = settings;
             LogWriter = logWriter;
-            SeriesCommands = seriesCommands;
             PhotoCommands = photoCommands;
             PatientListModel = patientListModel;
             TreatmentInfoStore = treatmentInfoStore;

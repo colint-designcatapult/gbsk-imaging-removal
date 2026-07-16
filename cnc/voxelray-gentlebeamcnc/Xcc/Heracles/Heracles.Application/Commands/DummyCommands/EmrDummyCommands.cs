@@ -256,31 +256,6 @@ namespace Heracles.Application.Commands.DummyCommands
     }
 
 
-    public class EmrDummySeriesCommands : DummyChildEntryCommands<ISeries, Series>, IEmrSeriesCommands
-    {
-        public EmrDummySeriesCommands()
-            : base(p => p.DiagnosisId)
-        {
-        }
-
-        public Task SendDicomDataAsync(int index, byte[] file, int chunkSize, long seriesId)
-        {
-            // todo: implement method
-            //throw new NotImplementedException();
-
-            return Task.CompletedTask;
-        }
-
-        public Task SendDicomFilesAsync(string[] files, int chunkSize, long seriesId)
-        {
-            // todo: implement method
-            //throw new NotImplementedException();
-
-            return Task.CompletedTask;
-        }
-
-    }
-
     public class EmrDummyPhotoCommands : DummyChildEntryCommands<IPhotoDescription, PhotoDescription>, IEmrPhotoCommands
     {
         public EmrDummyPhotoCommands()

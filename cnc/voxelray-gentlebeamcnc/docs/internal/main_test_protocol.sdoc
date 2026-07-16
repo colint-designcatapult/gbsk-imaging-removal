@@ -3752,53 +3752,6 @@ selected patient.
 <<<
 
 [TEST_CASE]
-UID: TC-H10SG-324
-TITLE: EMR: Imaging View - Photoacoustics Imaging for treatment image-guidance - Layout - Tests Case
-STATEMENT: >>>
-This test case is to verify that the application has a user interface that enables the user to acquire Photo-Acoustics Imaging. The Layout should include the following parts: 1. Identification of the patient. 2. DICOM viewer - 3 frames of image visualization for the three orthogonal directions XY, XZ, YZ Action buttons: 1. Pick/Place Imaging Head— to lock/unlock the imaging source head. 2. Prepare Laser 3. Acquire - The image acquisitions shall run according to the configured parameters. 4. Stop - An acquisition shall be forced to terminate. 5. Back - The view shall be closed and returned to the Plan view. Setting - Shall open a collapse/expand view to enable the user to configure the photoacoustic imaging settings.
-<<<
-PREREQUISITES: >>>
-Create a patient and load images (for testing DICOM viewer)
-<<<
-STEPS: >>>
-Test Steps: 
-
-1. Launch and login Heracles internal SW 
-
-2. Navigate to the patient's tab 
-
-3. Click twice on the pre-created patient 
-
-4. Click the Scan button to open the Image Acquisition View
-<<<
-EXPECTED_BEHAVIOR: >>>
-The Layout should include the following parts: 
-
-1. Identification of the patient. 
-
-2. DICOM viewer - 3 frames of image visualization for the three orthogonal directions XY, XZ, YZ 
-
-Action buttons: 
-
-1. Pick/Place Imaging Head—Based on a preset configuration, the robot shall move into position to pick up/release and lock/unlock the 
-imaging source head. 
-
-2. Prepare Laser 
-
-3. Acquire - The image acquisitions shall run according to the configured parameters. 
-
-4. Stop - An acquisition shall be forced to terminate. 
-
-5. Back - The view shall be closed and returned to the Plan view. 
-
-Setting - Shall open a collapse/expand view to enable the user to configure the photoacoustic imaging settings. 
-
-Observed behavior 
-
-As expected.
-<<<
-
-[TEST_CASE]
 UID: TC-H10SG-760
 TITLE: User Profile Management - Create New User and Verify Login UI Test Case
 STATEMENT: >>>

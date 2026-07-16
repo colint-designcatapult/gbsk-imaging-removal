@@ -9,7 +9,6 @@ namespace Heracles.Core.Models.EMR
 
         long PrescriptionId { get; set; }
 
-        long OriginSeriesId { get; set; }
 
         PlanStatus Status { get; set; }
 

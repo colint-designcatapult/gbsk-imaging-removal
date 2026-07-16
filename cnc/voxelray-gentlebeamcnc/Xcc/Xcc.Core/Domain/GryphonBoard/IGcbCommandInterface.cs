@@ -13,8 +13,6 @@ namespace Xcc.Core.Domain.GryphonBoard
         Task SendOperationalPoint(OperationalPointCmdType commandType, GcbOperationalPoint operationalPoint, GcbSession session);
         Task SendDirectiveCommand(GCBDirectiveCommandNew command);
         Task ReleasePlan(GCBReleaseCommandScope scope, GcbSession session);
-        Task StartImaging(GcbSession session);
-        Task ReleaseImagingPoint(GcbSession session);
         Task<GcbSession> NewSession(int totalPoints);
         Task Stop();
         Task Initialize();

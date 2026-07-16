@@ -1,4 +1,4 @@
-﻿namespace Heracles.Core.Enums
+namespace Heracles.Core.Enums
 {
     public enum ESeriesFormat
     {

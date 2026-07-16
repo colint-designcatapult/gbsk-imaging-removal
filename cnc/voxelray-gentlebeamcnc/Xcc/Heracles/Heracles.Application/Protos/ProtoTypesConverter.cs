@@ -13,7 +13,6 @@ using Com.Empyreanmed.Heracles.Prescriptions.V1;
 using Com.Empyreanmed.Heracles.QcsampleFields.V1;
 using Com.Empyreanmed.Heracles.Qcsamples.V1;
 using Com.Empyreanmed.Heracles.SafetyChecks.V1;
-using Com.Empyreanmed.Heracles.Series.V1;
 using Com.Empyreanmed.Heracles.Settings.V1;
 using Com.Empyreanmed.Heracles.Simulations.V1;
 using Com.Empyreanmed.Heracles.TreatmentDevices.V1;
@@ -997,39 +996,6 @@ namespace Heracles.Application.Protos
             }
         }
 
-        public static Core.Enums.ImageType FromProto(IMAGETYPE type)
-        {
-            switch (type)
-            {
-                case IMAGETYPE.Unspecified:
-                    return Core.Enums.ImageType.Unspecified;
-                case IMAGETYPE.Xray:
-                    return Core.Enums.ImageType.Xray;
-                case IMAGETYPE.Photoacoustic:
-                    return Core.Enums.ImageType.Photoacoustic;
-                case IMAGETYPE.Photosonic:
-                    return Core.Enums.ImageType.PhotoSonic;
-                default:
-                    throw new InvalidCastException("Unknown argument: " + type.ToString());
-            }
-        }
-
-        public static IMAGETYPE ToProto(Core.Enums.ImageType type)
-        {
-            switch (type)
-            {
-                case Core.Enums.ImageType.Unspecified:
-                    return IMAGETYPE.Unspecified;
-                case Core.Enums.ImageType.Xray:
-                    return IMAGETYPE.Xray;
-                case Core.Enums.ImageType.Photoacoustic:
-                    return IMAGETYPE.Photoacoustic;
-                case Core.Enums.ImageType.PhotoSonic:
-                    return IMAGETYPE.Photosonic;
-                default:
-                    throw new InvalidCastException("Unknown argument: " + type.ToString());
-            }
-        }
 
         public static DEVICETYPE ToProto(Core.Enums.DeviceType deviceName)
         {
@@ -2024,7 +1990,6 @@ namespace Heracles.Application.Protos
             {
                 Id = plan.Id,
                 PrescriptionId = plan.PrescriptionId,
-                OriginSeriesId = plan.OriginSeriesId,
                 CollimatorType = FromProto(plan.TargetType),
                 ApprovedBy = plan.ApprovedBy,
                 CreationDate = FromTimestamp(plan.CreationDate),
@@ -2047,10 +2012,6 @@ namespace Heracles.Application.Protos
                 TreatmentLoadingState = ToProto(plan.TreatmentLoadingState)
             };
 
-            if (plan.OriginSeriesId > 0)
-            {
-                protoPlan.OriginSeriesId = plan.OriginSeriesId;
-            }
 
 
             if (!BaseEntry.IsBlankEntry(plan))
@@ -2352,55 +2313,6 @@ namespace Heracles.Application.Protos
                 outValue.Id = position.Id;
             }
             return outValue;
-        }
-
-        public static ISeries FromProto(Series series)
-        {
-            if (series == null)
-                throw new ArgumentNullException(nameof(series));
-
-            return new Application.Models.RDBMS.EMR.Series
-            {
-                Id = series.Id,
-                CreationDate = FromTimestamp(series.CreationDate),
-                DiagnosisId = series.DiagnosisId,
-                LesionDepth = series.LesionDepth,
-                Location = series.Location,
-                Name = series.Name,
-                Type = FromProto(series.Type),
-                VisitId = series.VisitId,
-                Description = series.Description,
-                NumberOfInstances = series.NumOfInstances,
-            };
-        }
-
-        public static Series ToProto(ISeries series)
-        {
-            if (series == null)
-                throw new ArgumentNullException(nameof(series));
-
-            var proto = new Series
-            {
-                DiagnosisId = series.DiagnosisId,
-                LesionDepth = (float)series.LesionDepth,
-                Location = series.Location,
-                Name = series.Name,
-                Type = ToProto(series.Type),
-                VisitId = series.VisitId,
-                NumOfInstances = series.NumberOfInstances,
-            };
-
-            if (series.Description != null)
-            {
-                proto.Description = series.Description;
-            }
-
-            if (!BaseEntry.IsBlankEntry(series))
-            {
-                proto.Id = series.Id;
-            }
-
-            return proto;
         }
 
         public static Photo ToProto(IPhotoDescription photoDescription)

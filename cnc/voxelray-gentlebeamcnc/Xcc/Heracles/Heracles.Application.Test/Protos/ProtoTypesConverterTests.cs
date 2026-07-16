@@ -11,7 +11,6 @@ namespace Heracles.Application.Test.Protos
     [TestFixture(typeof(Xcc.Core.Enums.LogRecordSeverity), Xcc.Core.Enums.LogRecordSeverity.Unspecified - 1)]
     [TestFixture(typeof(Xcc.Core.Enums.LogRecordType), Xcc.Core.Enums.LogRecordType.Unspecified - 1)]
     [TestFixture(typeof(MagnetometerType), MagnetometerType.Back - 1)]
-    [TestFixture(typeof(Core.Enums.ImageType), Core.Enums.ImageType.Unspecified -1)]
     [TestFixture(typeof(Core.Enums.DeviceType), Core.Enums.DeviceType.PrefabricatedShield - 1)]
     [TestFixture(typeof(Core.Enums.TreatmentLoadingState), Core.Enums.TreatmentLoadingState.Unloaded - 1)]
     [TestFixture(typeof(Xcc.Core.Enums.PatientIdType), Xcc.Core.Enums.PatientIdType.Unspecified - 1)]
@@ -74,7 +73,6 @@ namespace Heracles.Application.Test.Protos
     [TestFixture(typeof(SEVERITY), SEVERITY.Unspecified - 1)]
     [TestFixture(typeof(LOGTYPE), LOGTYPE.Unspecified - 1)]
     [TestFixture(typeof(MAGNETOMETERTYPE), MAGNETOMETERTYPE.Unspecified)] // Doesn't support Unspecified value conversion
-    [TestFixture(typeof(IMAGETYPE), IMAGETYPE.Unspecified - 1)]
     [TestFixture(typeof(DEVICETYPE), DEVICETYPE.Unspecified)] // Doesn't support Unspecified value conversion
     [TestFixture(typeof(TREATMENTLOADINGSTATE), TREATMENTLOADINGSTATE.Unspecified)] // Doesn't support Unspecified value conversion
     [TestFixture(typeof(PATIENTIDTYPE), PATIENTIDTYPE.Unspecified)] // Doesn't support Unspecified value conversion

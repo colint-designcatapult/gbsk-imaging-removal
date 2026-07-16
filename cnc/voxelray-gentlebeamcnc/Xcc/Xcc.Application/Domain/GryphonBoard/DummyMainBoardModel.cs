@@ -364,48 +364,6 @@ namespace Xcc.Application.Domain.GryphonBoard
             return Task.CompletedTask;
         }
 
-        protected override Task StartWaitingForImagingKey()
-        {
-            _ = LogWriter.LogAsync($"StartImaging", LogRecordSeverity.Info, LogRecordType.System);
-
-            var telemetry = SystemTelemetry;
-            if (telemetry is null)
-            {
-                throw new NullReferenceException(nameof(telemetry));
-            }
-            else
-            {
-                int currentPoint = telemetry.CurrentOperationalPoint;
-                if (currentPoint < CurrentPlan.TotalPoints)
-                {
-                    var currentPointValue = CurrentPlan[currentPoint];
-                    currentPointValue.InitialRemainingPointTime = currentPointValue.RemainingPointTime;
-                    CurrentPlan.UpdatePoint(currentPointValue);
-                }
-            }
-
-            int delayForKeyPressMs = 3000;
-
-            EventAggregator.GetEvent<DummyXrayStatusChangedEvent>().Publish(new DummyXrayStatusChangedEventArgs
-            {
-                Status = DummyXrayStatus.StartWaitingForImagingKey,
-                Parameter = delayForKeyPressMs
-            });
-
-            OnGcbActionCompletion(GcbActionType.StartWaitingForImagingKey);
-            return Task.CompletedTask;
-        }
-
-        protected override Task ReleaseImagingPoint()
-        {
-            EventAggregator.GetEvent<DummyXrayStatusChangedEvent>().Publish(new DummyXrayStatusChangedEventArgs
-            {
-                Status = DummyXrayStatus.StartImagingEmission,
-                Parameter = new List<GcbOperationalPoint>(CurrentPlan.Points)
-            });
-            return Task.CompletedTask;
-        }
-
         protected override Task<bool> StartPlan()
         {
             //if (EmissionPlanStepDurations != null && EmissionPlanStepDurations.Count > 0)

@@ -48,12 +48,6 @@ namespace Heracles.Core.Commands
     {
     }
 
-    public interface IEmrSeriesCommands : IAsyncChildEntryCommands<ISeries>
-    {
-        Task SendDicomDataAsync(int index, byte[] file, int chunkSize, long seriesId);
-        Task SendDicomFilesAsync(string[] files, int chunkSize, long seriesId);
-    }
-
     public interface IEmrPhotoCommands : IAsyncChildEntryCommands<IPhotoDescription>
     {
         Task SendPhotoAsync(IPhoto photo, int chunkSize, CancellationToken token);

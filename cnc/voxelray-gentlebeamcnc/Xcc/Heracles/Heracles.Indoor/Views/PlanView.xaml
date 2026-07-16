@@ -95,8 +95,6 @@
             <Grid Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="2">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="{StaticResource BlockMarginGridLength}" />
-                    <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
                 <!--Photos-->
@@ -145,63 +143,6 @@
                         </controls:XccGallery>
                     </Grid>
                 </Border>
-
-                <!--Images-->
-                <Border Grid.Column="2" Style="{StaticResource BorderBlockStyle}">
-                    <Grid Margin="{StaticResource LabeledBlockContentMargin}">
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="Auto" />
-                            <RowDefinition Height="{StaticResource BlockContentSmallMarginLength}"/>
-                            <RowDefinition Height="*" />
-                        </Grid.RowDefinitions>
-
-                        <TextBlock 
-                            Grid.Row="0"
-                            Text="Images"  
-                            FontSize="{StaticResource LargeFontSize}" 
-                            Style="{StaticResource TextBlockLegendStyle}"
-                            Foreground="{StaticResource ForegroundPaleBrush}"
-                            HorizontalAlignment="Left"/> 
-
-                        <controls:XccGallery 
-                            Grid.Row="2"
-                            SelectedItem="{Binding SelectedImage}"
-                            ItemsSource="{Binding AcquisitionModel.Items}"
-                            ButtonStyle="{StaticResource ButtonDefaultStyle}"
-                            IsTabStop="False">
-
-                            <controls:XccGallery.ItemTemplate>
-                                <DataTemplate DataType="{x:Type emr1:ISeries}">
-                                    <Border x:Name="Border" Margin="4" BorderThickness="2" CornerRadius="{StaticResource FieldCornerRadius}">
-                                        <Grid>
-                                            <Image Source="{Binding Location}" RenderOptions.BitmapScalingMode="HighQuality" SnapsToDevicePixels="True"/>
-
-                                            <Button 
-                                                Style="{StaticResource PlayButtonStyle}"
-                                                Command="{Binding DataContext.OpenAcquisitionCommand, RelativeSource={RelativeSource AncestorType=views:PlanView}}" 
-                                                CommandParameter="{Binding}"
-                                                Width="40" Height="40" 
-                                                VerticalAlignment="Top" HorizontalAlignment="Right" 
-                                                Margin="8"/>
-                                        </Grid>
-                                    </Border>
-
-                                    <!--<DataTemplate.Triggers>
-                                        <DataTrigger Value="True">
-                                            <DataTrigger.Binding>
-                                                <MultiBinding Converter="{convx:ItemsIsEqualConverter}">
-                                                    <Binding RelativeSource="{RelativeSource AncestorType=controls:XccGallery}" Path="SelectedItem"/>
-                                                    <Binding />
-                                                </MultiBinding>
-                                            </DataTrigger.Binding>
-                                            <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource SelectedForegroundBrush}"/>
-                                        </DataTrigger>
-                                    </DataTemplate.Triggers>-->
-                                </DataTemplate>
-                            </controls:XccGallery.ItemTemplate>
-                        </controls:XccGallery>
-                    </Grid>
-                </Border>
             </Grid>
         </Grid>
 
@@ -240,7 +181,7 @@
 
                 <!--Capture photo button-->
                 <Button 
-                    Grid.Column="4"
+                    Grid.Column="2"
                     Height="{StaticResource ButtonHeight}"
                     Width="{StaticResource ButtonWidthLarge}"
                     Command="{Binding CapturePhotoCommand}">
@@ -258,29 +199,6 @@
                             Width="32" Height="32"/>
 
                         <TextBlock Grid.Column="2" Style="{StaticResource ButtonTextBlockStyle}" Text="Camera"/>
-                    </Grid>
-                </Button>
-
-                <!--Scan button-->
-                <Button 
-                    Grid.Column="2"
-                    Height="{StaticResource ButtonHeight}"
-                    Width="{StaticResource ButtonWidth}"
-                    Command="{Binding ScanVolumeCommand}">
-
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="Auto"/>
-                            <ColumnDefinition Width="{StaticResource FieldSmallMarginGridLength}"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-
-                        <Path 
-                            Data="{StaticResource UltrasoundIcon}" 
-                            Style="{StaticResource ButtonPathStyle}" 
-                            Width="38" Height="38"/>
-
-                        <TextBlock Grid.Column="2" Style="{StaticResource ButtonTextBlockStyle}" Text="Scan"/>
                     </Grid>
                 </Button>
 

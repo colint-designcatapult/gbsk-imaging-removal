@@ -41,8 +41,5 @@
             <ContentControl IsTabStop="False" prism:RegionManager.RegionName="{x:Static appx:Regions+Main+ClinicalData.TreatmentsRegion}"/>
         </TabItem>
                 
-        <TabItem Header="Images">
-            <ContentControl IsTabStop="False" prism:RegionManager.RegionName="{x:Static appx:Regions+Main+ClinicalData.ImagesRegion}"/>
-        </TabItem>
     </TabControl>
 </ContentControl>

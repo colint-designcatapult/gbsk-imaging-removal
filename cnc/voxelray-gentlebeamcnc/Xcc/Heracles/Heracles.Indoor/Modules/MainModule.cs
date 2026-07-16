@@ -221,9 +221,7 @@ internal class MainModule(IRegionManager regionManager, IDialogService dialogSer
         containerRegistry.RegisterForNavigation<ClinicalDataTabsView>();
         containerRegistry.RegisterForNavigation<PlanView>();
         containerRegistry.RegisterForNavigation<TreatmentsView>();
-        containerRegistry.RegisterForNavigation<ImagesView>();
         containerRegistry.RegisterForNavigation<CameraView>();
-        containerRegistry.RegisterForNavigation<ImagingView>();
         containerRegistry.RegisterForNavigation<PatientImagesView>();
 
         containerRegistry.RegisterDialog<AcknowledgeSimulationView>();
