@@ -3018,17 +3018,11 @@ namespace Heracles.Application.Protos
                 {
                     RecordAndVerifyEndPoint = new SystemEndPoint(settings.RecordAndVerifyIp, settings.RecordAndVerifyPort),
                     DatabaseEndpoint = new SystemEndPoint(settings.DatabaseIp, settings.DatabasePort),
-                    ImagingHeadCamEndPoint = new SystemEndPoint(settings.ImagingHeadcamIp, settings.ImagingHeadcamPort),
                     TreatmentHeadCamEndPoint = new SystemEndPoint(settings.TreatmentHeadcamIp, settings.TreatmentHeadcamPort),
                     GCBTelemetryEndPoint = new SystemEndPoint(settings.GcbTelemetryIp, settings.GcbTelemetryPort),
                     GCBCommandsEndPoint = new SystemEndPoint(settings.GcbCommandsIp, settings.GcbCommandsPort),
                     // TODO: we temporarily store qcb in robot's columns
-                    QcbCommandsEndPoint = new SystemEndPoint(settings.RoboticRosIp, settings.RoboticRosPort),
-                    ImagingServerEndPoint = new SystemEndPoint(settings.DataAcquisitionIp, settings.DataAcquisitionPort),
-                    DCDataReconstructionServerEndPoint = new SystemEndPoint(settings.DcDataReconstructionIp, settings.DcDataReconstructionPort),
-                    DCDataProgressWebSocketEndPoint = new SystemEndPoint(settings.DcDataProgressWebsocketIp, settings.DcDataProgressWebsocketPort),
-                    DCDataReconstructionZmqEndPoint = new SystemEndPoint(settings.DcDataReconstructionZMqIp, settings.DcDataReconstructionZMqPort),
-                    DCDatabaseEndPoint = new SystemEndPoint(settings.DcDatabaseIp, settings.DcDatabasePort)
+                    QcbCommandsEndPoint = new SystemEndPoint(settings.RoboticRosIp, settings.RoboticRosPort)
                 },
                 DeviceSerial = settings.DeviceSerial,
             };
@@ -3047,25 +3041,12 @@ namespace Heracles.Application.Protos
                 RecordAndVerifyPort = settings.EndPointsConfiguration.RecordAndVerifyEndPoint.Port.ToString(),
                 DatabaseIp = settings.EndPointsConfiguration.DatabaseEndpoint.Ip(),
                 DatabasePort = settings.EndPointsConfiguration.DatabaseEndpoint.Port.ToString(),
-                ImagingHeadcamIp = settings.EndPointsConfiguration.ImagingHeadCamEndPoint.Ip(),
-                ImagingHeadcamPort = settings.EndPointsConfiguration.ImagingHeadCamEndPoint.Port.ToString(),
                 TreatmentHeadcamIp = settings.EndPointsConfiguration.TreatmentHeadCamEndPoint.Ip(),
                 TreatmentHeadcamPort = settings.EndPointsConfiguration.TreatmentHeadCamEndPoint.Port.ToString(),
                 GcbTelemetryIp = settings.EndPointsConfiguration.GCBTelemetryEndPoint.Ip(),
                 GcbTelemetryPort = settings.EndPointsConfiguration.GCBTelemetryEndPoint.Port.ToString(),
                 GcbCommandsIp = settings.EndPointsConfiguration.GCBCommandsEndPoint.Ip(),
                 GcbCommandsPort = settings.EndPointsConfiguration.GCBCommandsEndPoint.Port.ToString(),
-                DataAcquisitionIp = settings.EndPointsConfiguration.ImagingServerEndPoint.Ip(),
-                DataAcquisitionPort = settings.EndPointsConfiguration.ImagingServerEndPoint.Port.ToString(),
-
-                DcDataReconstructionIp = settings.EndPointsConfiguration.DCDataReconstructionServerEndPoint.Ip(),
-                DcDataReconstructionPort = settings.EndPointsConfiguration.DCDataReconstructionServerEndPoint.Port.ToString(),
-                DcDataProgressWebsocketIp = settings.EndPointsConfiguration.DCDataProgressWebSocketEndPoint.Ip(),
-                DcDataProgressWebsocketPort = settings.EndPointsConfiguration.DCDataProgressWebSocketEndPoint.Port.ToString(),
-                DcDataReconstructionZMqIp = settings.EndPointsConfiguration.DCDataReconstructionZmqEndPoint.Ip(),
-                DcDataReconstructionZMqPort = settings.EndPointsConfiguration.DCDataReconstructionZmqEndPoint.Port.ToString(),
-                DcDatabaseIp = settings.EndPointsConfiguration.DCDatabaseEndPoint.Ip(),
-                DcDatabasePort = settings.EndPointsConfiguration.DCDatabaseEndPoint.Port.ToString(),
 
                 DeviceSerial = settings.DeviceSerial
             };

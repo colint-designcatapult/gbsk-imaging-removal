@@ -1,8 +1,0 @@
-image: node:20.12.2
-pipelines:
-  default:
-    - step:
-        script:
-          - npm install
-          - npm run check_formatting
-          - npm run lint

@@ -60,11 +60,6 @@
 
                         <ucx:EndPointInputControl 
                             Grid.Row="2" Grid.Column="0"
-                            Tag="Room Camera " 
-                            EndPoint="{Binding EndPointsConfiguration.ImagingHeadCamEndPoint}"/>
-
-                        <ucx:EndPointInputControl 
-                            Grid.Row="4" Grid.Column="0"
                             Tag="Treatment Head Camera " 
                             EndPoint="{Binding EndPointsConfiguration.TreatmentHeadCamEndPoint}"/>
 
@@ -80,11 +75,6 @@
 
                         <ucx:EndPointInputControl 
                             Grid.Row="4" Grid.Column="2"
-                            Tag="Imaging Server " 
-                            EndPoint="{Binding EndPointsConfiguration.ImagingServerEndPoint}"/>
-
-                        <ucx:EndPointInputControl 
-                            Grid.Row="6" Grid.Column="2"
                             Tag="GCB QC" 
                             EndPoint="{Binding EndPointsConfiguration.QcbCommandsEndPoint}"/>
                     </Grid>

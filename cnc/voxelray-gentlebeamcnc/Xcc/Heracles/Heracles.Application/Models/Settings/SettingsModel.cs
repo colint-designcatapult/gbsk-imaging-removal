@@ -33,18 +33,11 @@ namespace Heracles.Application.Models.Settings
             {
                 RecordAndVerifyEndPoint = new SystemEndPoint(heraclesCoreSettings.DataCommandsEndPoint),
                 DatabaseEndpoint = new SystemEndPoint(SystemEndPoint.LocalHost),
-                ImagingHeadCamEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
                 TreatmentHeadCamEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
                 GCBTelemetryEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBTelemetryEndPoint?.Address() ?? "127.0.0.1:50020"),
                 GCBCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBCommandsEndPoint?.Address() ?? "127.0.0.1:50007"),
                 AcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.AcbCommandsEndPoint?.Address() ?? "127.0.0.1:50022"),
-                QcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.QcbCommandsEndPoint?.Address() ?? "127.0.0.1:50023"),
-                ImagingServerEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
-
-                DCDataReconstructionServerEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
-                DCDataProgressWebSocketEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
-                DCDataReconstructionZmqEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
-                DCDatabaseEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost)
+                QcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.QcbCommandsEndPoint?.Address() ?? "127.0.0.1:50023")
             };
             endpoints.AcceptChanges();
             Settings.EndPointsConfiguration = endpoints;
