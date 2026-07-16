@@ -996,39 +996,6 @@ namespace Heracles.Application.Protos
             }
         }
 
-        public static Core.Enums.ImageType FromProto(IMAGETYPE type)
-        {
-            switch (type)
-            {
-                case IMAGETYPE.Unspecified:
-                    return Core.Enums.ImageType.Unspecified;
-                case IMAGETYPE.Xray:
-                    return Core.Enums.ImageType.Xray;
-                case IMAGETYPE.Photoacoustic:
-                    return Core.Enums.ImageType.Photoacoustic;
-                case IMAGETYPE.Photosonic:
-                    return Core.Enums.ImageType.PhotoSonic;
-                default:
-                    throw new InvalidCastException("Unknown argument: " + type.ToString());
-            }
-        }
-
-        public static IMAGETYPE ToProto(Core.Enums.ImageType type)
-        {
-            switch (type)
-            {
-                case Core.Enums.ImageType.Unspecified:
-                    return IMAGETYPE.Unspecified;
-                case Core.Enums.ImageType.Xray:
-                    return IMAGETYPE.Xray;
-                case Core.Enums.ImageType.Photoacoustic:
-                    return IMAGETYPE.Photoacoustic;
-                case Core.Enums.ImageType.PhotoSonic:
-                    return IMAGETYPE.Photosonic;
-                default:
-                    throw new InvalidCastException("Unknown argument: " + type.ToString());
-            }
-        }
 
         public static DEVICETYPE ToProto(Core.Enums.DeviceType deviceName)
         {
