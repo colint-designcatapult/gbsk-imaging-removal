@@ -274,9 +274,7 @@ namespace Heracles.Application.Infra.DataManagement.System.DataAccess.Dummy
                 DatabaseEndpoint = new SystemEndPoint("127.0.0.1:5433"),
                 TreatmentHeadCamEndPoint = new SystemEndPoint("127.0.0.1:50003"),
                 GCBTelemetryEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBTelemetryEndPoint?.Address() ?? "127.0.0.1:50020"),
-                GCBCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBCommandsEndPoint?.Address() ?? "127.0.0.1:50007"),
-                AcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.AcbCommandsEndPoint?.Address() ?? "127.0.0.1:7000"),
-                QcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.QcbCommandsEndPoint?.Address() ?? "127.0.0.1:8000")
+                GCBCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBCommandsEndPoint?.Address() ?? "127.0.0.1:50007")
             };
 
             var settings = new SystemSettings { DeviceSerial = debugSettings.DummyDeviceSerial, EndPointsConfiguration = endpoints };

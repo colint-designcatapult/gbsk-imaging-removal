@@ -3020,9 +3020,7 @@ namespace Heracles.Application.Protos
                     DatabaseEndpoint = new SystemEndPoint(settings.DatabaseIp, settings.DatabasePort),
                     TreatmentHeadCamEndPoint = new SystemEndPoint(settings.TreatmentHeadcamIp, settings.TreatmentHeadcamPort),
                     GCBTelemetryEndPoint = new SystemEndPoint(settings.GcbTelemetryIp, settings.GcbTelemetryPort),
-                    GCBCommandsEndPoint = new SystemEndPoint(settings.GcbCommandsIp, settings.GcbCommandsPort),
-                    // TODO: we temporarily store qcb in robot's columns
-                    QcbCommandsEndPoint = new SystemEndPoint(settings.RoboticRosIp, settings.RoboticRosPort)
+                    GCBCommandsEndPoint = new SystemEndPoint(settings.GcbCommandsIp, settings.GcbCommandsPort)
                 },
                 DeviceSerial = settings.DeviceSerial,
             };

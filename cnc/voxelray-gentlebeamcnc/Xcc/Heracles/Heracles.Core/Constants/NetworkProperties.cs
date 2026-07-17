@@ -3,11 +3,8 @@
     public class NetworkProperties
     {
         public const string DataCommandsEndPoint = "172.31.1.222:3232";
-        public const string QcbEndPoint = "172.31.1.231:7000";
         public const string GcbTelemetryEndPoint = "172.31.1.100:20";
         public const string GcbCommandsEndPoint = "172.31.1.100:7";
-        public const string UpsBroadcastServiceEndPoint = "172.31.1.255:58888";
-        public const string AcbCommandsEndPoint = "172.31.1.229:7000";
 
         public const string GCB_IPADDRESS = "172.31.1.100";
         public const int GCB_TELEMETRY_PORT = 20;
