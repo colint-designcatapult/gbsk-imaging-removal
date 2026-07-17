@@ -15,7 +15,6 @@ namespace Heracles.Core.Models
 
     public interface IHeraclesMainSettings : IHeraclesCoreSettings, ITextLogSettings, IXRaySettings, IDebugSettings
     {
-        ISystemEndPoint UpsBroadcastServiceEndPoint { get; set; }
         bool UseDummyHeadActuators { get; }
     }
 

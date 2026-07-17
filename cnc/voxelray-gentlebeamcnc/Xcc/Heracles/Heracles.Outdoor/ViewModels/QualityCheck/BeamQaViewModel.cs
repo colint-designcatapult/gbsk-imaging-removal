@@ -61,9 +61,7 @@ namespace Heracles.External.ViewModels.QualityCheck
             IGcbIndicators gcbIndicators,
             IAuthorizedUserStore userStore,
             QcReportService qcReportService,
-            IQcbReadingModel qcbReadingModel,
             IDispatcherService dispatcherService,
-            IQcbService qcbService,
             ICollimatorCalibrationModel collimatorCalibrationModel,
             ICollimatorConfigurationStore collimatorConfigurationStore,
             ApplicatorCompatibilityService applicatorCompatibilityService,
@@ -78,8 +76,6 @@ namespace Heracles.External.ViewModels.QualityCheck
         {
             UserStore = userStore;
             QcReportService = qcReportService;
-            QcbReadingModel = qcbReadingModel;
-            QcbService = qcbService;
             CollimatorCalibrationModel = collimatorCalibrationModel;
             ApplicatorCompatibilityService = applicatorCompatibilityService;
             QcPlan = new QualityCheckPlan(dispatcherService, heraclesExternalSettings.QcFieldDuration);
@@ -123,8 +119,6 @@ namespace Heracles.External.ViewModels.QualityCheck
         public IAuthorizedUserStore UserStore { get; }
         public QcReportService QcReportService { get; }
         public QualityCheckPlan QcPlan { get; }
-        public IQcbReadingModel QcbReadingModel { get; }
-        public IQcbService QcbService { get; }
         public ICollimatorCalibrationModel CollimatorCalibrationModel { get; }
         public ApplicatorCompatibilityService ApplicatorCompatibilityService { get; }
 
@@ -275,52 +269,8 @@ namespace Heracles.External.ViewModels.QualityCheck
         public DelegateCommand QCTestCommand => _qcTestCommand ??= new DelegateCommand(
             async () =>
             {
-                bool isAlive;
-                try
-                {
-                    isAlive = await QcbService.PingBoardAsync();
-                    LogInfoSystem($"QCB ping: isAlive = {isAlive}");
-                }
-                catch (Exception ex)
-                {
-                    LogInfoSystem($"QCB ping: exception {ex.Message}");
-                    isAlive = false;
-                }
-
-                if (isAlive)
-                {
-                    _ = Task.Run(async () =>
-                    {
-                        try
-                        {
-                            var status = await QcbService.StartQCReadingsAsync(NumberOfQcDiodes);
-                            bool isStarted = status == QcbCommandResponseStatus.StartConfirmed;
-                            LogInfoSystem($"QCB readings: isStarted = {isStarted}");
-                            if (!isStarted)
-                            {
-                                return;
-                            }
-
-                            var time = HeraclesExternalSettings.QcFieldDuration * 1000;
-                            await Task.Delay(time);
-                            var readings = await QcbService.StopQCReadingsAsync(NumberOfQcDiodes);
-                            if (readings != null)
-                            {
-                                LogInfoSystem($"QCB readings after {time}ms: " + string.Join(" ", readings.Data.Select(x => x.ToString(CultureInfo.CurrentCulture))));
-                            }
-                            else
-                            {
-                                LogInfoSystem("QCB readings: no response");
-                            }
-
-                            DialogService.Report("QCB", "QCB readings test is done. See debug log for details.", ReportType.Info);
-                        }
-                        catch (Exception ex)
-                        {
-                            LogInfoSystem($"QCB Start/Stop exception: {ex.Message}");
-                        }
-                    });
-                }
+                // QCB hardware removed - this test command is no longer functional
+                DialogService.Report("QCB", "QCB hardware has been removed from the system.", ReportType.Info);
             });
 
         #endregion Commands
@@ -605,7 +555,9 @@ namespace Heracles.External.ViewModels.QualityCheck
 
                     Task beamOn = MainBoardModel.BeamOnOnePoint();
 
-                    Task<QcReadings> dataReading = QcbReadingModel.ReadQCAsync(NumberOfQcDiodes, dataReadingCancellationTokenSource.Token, samplingWindowMs: 50);
+                    // QCB hardware removed - QC data reading disabled
+                    // Placeholder: create a completed task with empty readings
+                    Task<QcReadings> dataReading = Task.FromResult(new QcReadings(Array.Empty<float>()));
 
                     Task firstDone = await Task.WhenAny([beamOn, dataReading] /*todo: cancellationToken from AppGlobals*/);
 
@@ -723,11 +675,9 @@ namespace Heracles.External.ViewModels.QualityCheck
 
         private async Task CheckQCBoardStatusAsync()
         {
-            bool qcBoardIsAlive = await QcbReadingModel.PingBoardAsync();
-            if (!qcBoardIsAlive)
-            {
-                throw new Exception("QCBoard does not respond");
-            }
+            // QCB hardware removed - status check disabled
+            // Previously checked: bool qcBoardIsAlive = await QcbReadingModel.PingBoardAsync();
+            await Task.CompletedTask;
         }
 
         protected override Task SetPlanUnloadTaskAsync()

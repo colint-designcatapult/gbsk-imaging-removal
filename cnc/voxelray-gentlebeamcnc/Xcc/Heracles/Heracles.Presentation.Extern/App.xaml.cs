@@ -48,7 +48,6 @@ namespace Heracles
             containerRegistry.RegisterSingleton<IAppSettings, AppSettings>();
             containerRegistry.RegisterSingleton<ITelemetryService, AaronTelemetryService>();
             //containerRegistry.RegisterSingleton<ITelemetryService, TelemetryService>();
-            containerRegistry.RegisterSingleton<IUPSService, UPSService>();
             containerRegistry.RegisterSingleton<IGCBCommandsService, GCBCommandsService>();
             containerRegistry.RegisterSingleton<IGCBCommunicationService, GCBCommunicationService>();
             containerRegistry.RegisterSingleton<IXRayService, XRayService>();

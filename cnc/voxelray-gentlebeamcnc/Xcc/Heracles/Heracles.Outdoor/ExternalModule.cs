@@ -7,7 +7,6 @@ using Heracles.Application.Models.Supervision;
 using Heracles.Application.UI.Views;
 using Heracles.Core.Models;
 using Heracles.External.Views;
-using Heracles.External.Views.QualityCheck;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
@@ -23,12 +22,10 @@ using Xcc.Application.UI;
 using Xcc.Application.ViewModels;
 using Xcc.Application.Views.TreatmentConsole.QualityAssurance;
 using Xcc.Core.Constants;
-using Xcc.Core.Domain.QualityCheck;
 using Xcc.Core.Enums;
 using Xcc.Core.Logging;
 using Xcc.Core.Services;
 using Xcc.Infra.GryphonBoard.Comm;
-using Xcc.Infra.QualityCheck.Comm.Udp.MockServers;
 using Xcc.Infra.UserSessions;
 
 namespace Herales.External
@@ -212,15 +209,15 @@ namespace Herales.External
             containerRegistry.RegisterForNavigation<TreatmentView>();
             containerRegistry.RegisterForNavigation<ExternalTabsView>();
             
-            containerRegistry.RegisterForNavigation<QaTabsView>();
+            // QA views removed - QCB/ACB hardware removed from system
+            // containerRegistry.RegisterForNavigation<QaTabsView>();
+            // containerRegistry.RegisterForNavigation<BeamQaSelectorView>();
+            // containerRegistry.RegisterForNavigation<BeamQaReportsView>();
+            // containerRegistry.RegisterForNavigation<BeamQaView>();
+            // containerRegistry.RegisterForNavigation<SafetyCheckTabView>();
+            // containerRegistry.RegisterForNavigation<SafetyCheckReportsView>();
+            // containerRegistry.RegisterForNavigation<SafetyCheckView>();
 
-            containerRegistry.RegisterForNavigation<BeamQaSelectorView>();
-            containerRegistry.RegisterForNavigation<BeamQaReportsView>();
-            containerRegistry.RegisterForNavigation<BeamQaView>();
-            
-            containerRegistry.RegisterForNavigation<SafetyCheckTabView>();
-            containerRegistry.RegisterForNavigation<SafetyCheckReportsView>();
-            containerRegistry.RegisterForNavigation<SafetyCheckView>();
             containerRegistry.RegisterForNavigation<InterlocksDialogView>();
 
             containerRegistry.RegisterDialog<FaultsView>();

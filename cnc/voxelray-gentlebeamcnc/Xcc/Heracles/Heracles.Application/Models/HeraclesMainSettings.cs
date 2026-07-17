@@ -15,11 +15,6 @@ namespace Heracles.Application.Models
         #region IHeraclesMainSetting
 
 
-        public ISystemEndPoint UpsBroadcastServiceEndPoint { set; get; } =
-            SystemEndPoint.Create(
-                reader.GetOptionalString("AppSettings:EndPoints:UpsBroadcastServiceEndPoint", NetworkProperties.UpsBroadcastServiceEndPoint));
-
-
         #region ITextLogSettings
         public string LogFilename { get; } = reader.GetString("AppSettings:LogFilename");
         public int LogPageSize { get; } = reader.GetOptionalInt("AppSettings:LogPageSize", 0);
