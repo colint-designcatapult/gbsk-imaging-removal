@@ -68,8 +68,6 @@ namespace Herales.External
 
                 // Start telemetry service:
                 StartGcbServices(containerProvider);
-                // Start QC board service:
-                StartQcbService(containerProvider);
 
                 // Prefetch collimator data to have CollimatorModel ready for use
                 await FetchCollimatorDataAsync(containerProvider);
@@ -205,35 +203,6 @@ namespace Herales.External
             catch (Exception)
             {
                 dialogService.ReportError("GCB connection error", "Please check GCB connection settings");
-                throw;
-            }
-        }
-
-        private void StartQcbService(IContainerProvider containerProvider)
-        {
-            if (heraclesExternalSettings.UseDummyServices)
-            {
-                try
-                {
-                    containerProvider.Resolve<MockQcbServer>().Start(numberOfDiodes: 5, serverPort: heraclesExternalSettings.QcbCommandsEndPoint.Port.Value);
-                }
-                catch (Exception)
-                {
-                    dialogService.ReportError("QCB Mock Server error", "Please check QCB connection settings. QC Endpoint may be missing.");
-                    throw;
-                }
-            }
-
-            try
-            {
-                var networkSupervisor = containerProvider.Resolve<NetworkConnectionSupervisor>();
-
-                var qcbCommandService = containerProvider.Resolve<IQcbService>();
-                qcbCommandService.Start();
-            }
-            catch (Exception)
-            {
-                dialogService.ReportError("QCB connection error", "Please check QCB connection settings");
                 throw;
             }
         }

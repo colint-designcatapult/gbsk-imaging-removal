@@ -19,10 +19,6 @@ public class HeraclesExternalSettings(ISettingsReader reader) : Core.Models.IHer
 
 
     #region IHeraclesCoreSettings
-    public ISystemEndPoint AcbCommandsEndPoint { get; set; } =
-        SystemEndPoint.Create(
-            reader.GetOptionalString("AppSettings:EndPoints:AcbCommandsEndPoint", NetworkProperties.AcbCommandsEndPoint));
-
     #region ICoreSettings
     public ISystemEndPoint GCBTelemetryEndPoint { get; set; } =
         SystemEndPoint.Create(
@@ -31,10 +27,6 @@ public class HeraclesExternalSettings(ISettingsReader reader) : Core.Models.IHer
     public ISystemEndPoint GCBCommandsEndPoint { get; set; } =
         SystemEndPoint.Create(
             reader.GetOptionalString("AppSettings:EndPoints:GCBCommandsEndPoint", NetworkProperties.GcbCommandsEndPoint));
-
-    public ISystemEndPoint QcbCommandsEndPoint { get; set; } =
-        SystemEndPoint.Create(
-            reader.GetOptionalString("AppSettings:EndPoints:QcbCommandsEndPoint", NetworkProperties.QcbEndPoint));
 
     public ISystemEndPoint DataCommandsEndPoint { set; get; } =
         SystemEndPoint.Create(

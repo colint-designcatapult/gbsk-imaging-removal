@@ -28,10 +28,6 @@ namespace Heracles.Application.Models
 
 
         #region IHeraclesCoreSettings
-        public ISystemEndPoint AcbCommandsEndPoint { get; set; } =
-            SystemEndPoint.Create(
-                reader.GetOptionalString("AppSettings:EndPoints:AcbCommandsEndPoint", NetworkProperties.AcbCommandsEndPoint));
-
         #region ICoreSettings
         public ISystemEndPoint GCBTelemetryEndPoint { get; set; } =
             SystemEndPoint.Create(
@@ -40,10 +36,6 @@ namespace Heracles.Application.Models
         public ISystemEndPoint GCBCommandsEndPoint { get; set; } =
             SystemEndPoint.Create(
                 reader.GetOptionalString("AppSettings:EndPoints:GCBCommandsEndPoint", NetworkProperties.GcbCommandsEndPoint));
-
-        public ISystemEndPoint QcbCommandsEndPoint { get; set; } =
-            SystemEndPoint.Create(
-                reader.GetOptionalString("AppSettings:EndPoints:QcbCommandsEndPoint", NetworkProperties.QcbEndPoint));
 
         public ISystemEndPoint DataCommandsEndPoint { set; get; } =
             SystemEndPoint.Create(
@@ -74,7 +66,6 @@ namespace Heracles.Application.Models
         #region IAcbSettings
 
 
-        public int AcbReceiveTimeout { get; } = reader.GetOptionalInt("AppSettings:AcbReceiveTimeout_ms", 5000);
         public bool UseDummyHeadActuators { get; } = reader.GetOptionalBool("AppSettings:UseDummyHeadActuators", false);
         #endregion IAcbSettings
 

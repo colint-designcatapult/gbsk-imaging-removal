@@ -35,9 +35,7 @@ namespace Heracles.Application.Models.Settings
                 DatabaseEndpoint = new SystemEndPoint(SystemEndPoint.LocalHost),
                 TreatmentHeadCamEndPoint = new SystemEndPoint(SystemEndPoint.LocalHost),
                 GCBTelemetryEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBTelemetryEndPoint?.Address() ?? "127.0.0.1:50020"),
-                GCBCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBCommandsEndPoint?.Address() ?? "127.0.0.1:50007"),
-                AcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.AcbCommandsEndPoint?.Address() ?? "127.0.0.1:50022"),
-                QcbCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.QcbCommandsEndPoint?.Address() ?? "127.0.0.1:50023")
+                GCBCommandsEndPoint = new SystemEndPoint(heraclesCoreSettings.GCBCommandsEndPoint?.Address() ?? "127.0.0.1:50007")
             };
             endpoints.AcceptChanges();
             Settings.EndPointsConfiguration = endpoints;
@@ -73,8 +71,6 @@ namespace Heracles.Application.Models.Settings
             {
                 // Overwrite temporary/external (moses) endpoint settings, as it can be defined locally only:
                 settings.EndPointsConfiguration.RecordAndVerifyEndPoint = new SystemEndPoint(Settings.EndPointsConfiguration.RecordAndVerifyEndPoint);
-                // TODO: also, now we overwrite ACB & QCB endpoints, as they're not stored by Moses:
-                settings.EndPointsConfiguration.AcbCommandsEndPoint = new SystemEndPoint(Settings.EndPointsConfiguration.AcbCommandsEndPoint);
             }
         }
 

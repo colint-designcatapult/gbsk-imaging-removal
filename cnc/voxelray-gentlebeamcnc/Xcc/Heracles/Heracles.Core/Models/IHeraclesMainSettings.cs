@@ -6,8 +6,6 @@ namespace Heracles.Core.Models
 {
     public interface IHeraclesCoreSettings : ICoreSettings
     {
-        ISystemEndPoint AcbCommandsEndPoint { get; set; }
-        ISystemEndPoint QcbCommandsEndPoint { get; set; }
         ISystemEndPoint DataCommandsEndPoint { get; set; }
         int GrpcTimeout { get; }
         string StorageRoot { get; }
@@ -18,7 +16,6 @@ namespace Heracles.Core.Models
     public interface IHeraclesMainSettings : IHeraclesCoreSettings, ITextLogSettings, IXRaySettings, IDebugSettings
     {
         ISystemEndPoint UpsBroadcastServiceEndPoint { get; set; }
-        int AcbReceiveTimeout { get; }
         bool UseDummyHeadActuators { get; }
     }
 

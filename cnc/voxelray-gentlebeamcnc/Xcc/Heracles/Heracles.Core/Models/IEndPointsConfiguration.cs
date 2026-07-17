@@ -10,7 +10,5 @@ namespace Heracles.Core.Models
         SystemEndPoint TreatmentHeadCamEndPoint { get; set; }
         SystemEndPoint GCBTelemetryEndPoint { get; set; }
         SystemEndPoint GCBCommandsEndPoint { get; set; }
-        SystemEndPoint AcbCommandsEndPoint { get; set; }
-        SystemEndPoint QcbCommandsEndPoint { get; set; }
     }
 }
