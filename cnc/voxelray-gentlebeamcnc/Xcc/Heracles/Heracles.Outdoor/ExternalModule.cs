@@ -209,14 +209,14 @@ namespace Herales.External
             containerRegistry.RegisterForNavigation<TreatmentView>();
             containerRegistry.RegisterForNavigation<ExternalTabsView>();
             
-            // QA views removed - QCB/ACB hardware removed from system
-            // containerRegistry.RegisterForNavigation<QaTabsView>();
-            // containerRegistry.RegisterForNavigation<BeamQaSelectorView>();
-            // containerRegistry.RegisterForNavigation<BeamQaReportsView>();
-            // containerRegistry.RegisterForNavigation<BeamQaView>();
-            // containerRegistry.RegisterForNavigation<SafetyCheckTabView>();
-            // containerRegistry.RegisterForNavigation<SafetyCheckReportsView>();
-            // containerRegistry.RegisterForNavigation<SafetyCheckView>();
+            // QA views - QCB/ACB hardware removed but UI can function independently
+            containerRegistry.RegisterForNavigation<QaTabsView>();
+            containerRegistry.RegisterForNavigation<BeamQaSelectorView>();
+            containerRegistry.RegisterForNavigation<BeamQaReportsView>();
+            containerRegistry.RegisterForNavigation<BeamQaView>();
+            containerRegistry.RegisterForNavigation<SafetyCheckTabView>();
+            containerRegistry.RegisterForNavigation<SafetyCheckReportsView>();
+            containerRegistry.RegisterForNavigation<SafetyCheckView>();
 
             containerRegistry.RegisterForNavigation<InterlocksDialogView>();
 
